@@ -1,21 +1,22 @@
+
 const express = require("express");
-const { replyToComment } = require("../services/youtubeService");
+const { startBot } = require("../services/youtubeService");
 
 const router = express.Router();
 
-router.post("/reply", async (req, res) => {
-    const { commentId, responseText } = req.body;
+router.post("/start", async (req, res) => {
     const auth = req.session.tokens;
 
     if (!auth) return res.status(401).json({ error: "Unauthorized" });
 
     try {
-        await replyToComment(auth, commentId, responseText);
-        res.json({ success: true });
+        await startBot(auth);  // Запускаємо бота
+        res.json({ success: true, message: "Bot started!" });
     } catch (error) {
-        console.error("Error replying:", error);
-        res.status(500).json({ error: "Failed to reply" });
+        console.error("Error starting bot:", error);
+        res.status(500).json({ error: "Failed to start bot" });
     }
 });
 
 module.exports = router;
+
