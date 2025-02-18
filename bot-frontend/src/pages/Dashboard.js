@@ -4,45 +4,45 @@ import config from "../config/config";
 
 const Dashboard = () => {
     const [isConnected, setIsConnected] = useState(false);
+    const [videoUrl, setVideoUrl] = useState("");
+    const [customPrompt, setCustomPrompt] = useState("");
 
     useEffect(() => {
         fetch(`${config.backendUrl}/auth/status`, {
             method: "GET",
-            credentials: "include",  // ✅ Передаємо cookie
-            headers: {
-                "Content-Type": "application/json"
-            }
-        })
-            .then(res => {
-                console.log("Response headers:", res.headers);  // ЛОГ
-                return res.json();
-            })
-            .then(data => {
-                console.log("Server response:", data);  // ЛОГ
-                setIsConnected(data.connected);
-            })
-            .catch(error => console.error("Fetch error:", error));
-    }, []);
-
-    // const startBot = () => {
-    //     alert("🤖 Bot started! (тут має бути виклик API для запуску бота)");
-    // };
-
-    const startBot = () => {
-        fetch(`${config.backendUrl}/bot/start`, {
-            method: "POST",
             credentials: "include",
             headers: {
                 "Content-Type": "application/json"
             }
         })
             .then(res => res.json())
+            .then(data => setIsConnected(data.connected))
+            .catch(error => console.error("Fetch error:", error));
+    }, []);
+
+    const extractVideoId = (url) => {
+        const match = url.match(/(?:v=|\/)([0-9A-Za-z_-]{11})/);
+        return match ? match[1] : null;
+    };
+
+    const startBot = () => {
+        const videoId = extractVideoId(videoUrl);
+        if (!videoId) {
+            alert("❌ Невірний формат посилання!");
+            return;
+        }
+
+        fetch(`${config.backendUrl}/bot/start`, {
+            method: "POST",
+            credentials: "include",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ videoId, prompt: customPrompt })
+        })
+            .then(res => res.json())
             .then(data => {
-                if (data.success) {
-                    alert("🤖 Bot started!");
-                } else {
-                    alert("❌ Failed to start bot.");
-                }
+                alert(data.success ? "🤖 Bot started!" : "❌ Failed to start bot.");
             })
             .catch(error => console.error("Bot start error:", error));
     };
@@ -53,6 +53,21 @@ const Dashboard = () => {
             {isConnected ? (
                 <>
                     <p>✅ Connected to YouTube!</p>
+                    <input
+                        type="text"
+                        placeholder="Enter YouTube video URL"
+                        value={videoUrl}
+                        onChange={(e) => setVideoUrl(e.target.value)}
+                        style={{ padding: "10px", width: "300px", marginBottom: "10px" }}
+                    />
+                    <br />
+                    <textarea
+                        placeholder="Enter your custom prompt"
+                        value={customPrompt}
+                        onChange={(e) => setCustomPrompt(e.target.value)}
+                        style={{ padding: "10px", width: "300px", height: "100px", marginBottom: "10px" }}
+                    />
+                    <br />
                     <button onClick={startBot} style={{ padding: "10px 20px", fontSize: "16px" }}>
                         Start Bot
                     </button>
@@ -67,4 +82,3 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
-
