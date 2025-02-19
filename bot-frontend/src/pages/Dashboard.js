@@ -8,16 +8,22 @@ const Dashboard = () => {
     const [customPrompt, setCustomPrompt] = useState("");
 
     useEffect(() => {
-        fetch(`${config.backendUrl}/auth/status`, {
-            method: "GET",
-            credentials: "include",
-            headers: {
-                "Content-Type": "application/json"
+        const checkAuthStatus = async () => {
+            try {
+                const res = await fetch(`${config.backendUrl}/auth/status`, {
+                    method: "GET",
+                    credentials: "include",
+                    headers: { "Content-Type": "application/json" }
+                });
+
+                const data = await res.json();
+                setIsConnected(data.connected);
+            } catch (error) {
+                console.error("Fetch error:", error);
             }
-        })
-            .then(res => res.json())
-            .then(data => setIsConnected(data.connected))
-            .catch(error => console.error("Fetch error:", error));
+        };
+
+        checkAuthStatus();
     }, []);
 
     const extractVideoId = (url) => {
@@ -25,26 +31,27 @@ const Dashboard = () => {
         return match ? match[1] : null;
     };
 
-    const startBot = () => {
+    const startBot = async () => {
         const videoId = extractVideoId(videoUrl);
         if (!videoId) {
             alert("❌ Невірний формат посилання!");
             return;
         }
 
-        fetch(`${config.backendUrl}/bot/start`, {
-            method: "POST",
-            credentials: "include",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({ videoId, prompt: customPrompt })
-        })
-            .then(res => res.json())
-            .then(data => {
-                alert(data.success ? "🤖 Bot started!" : "❌ Failed to start bot.");
-            })
-            .catch(error => console.error("Bot start error:", error));
+        try {
+            const res = await fetch(`${config.backendUrl}/bot/start`, {
+                method: "POST",
+                credentials: "include",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ videoId, prompt: customPrompt })
+            });
+
+            const data = await res.json();
+            console.log("data:", data);
+            alert(data.success ? "🤖 Bot finished replying to comments." : "❌ Failed to start bot.");
+        } catch (error) {
+            console.error("Bot start error:", error);
+        }
     };
 
     return (
@@ -82,3 +89,4 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+

@@ -16,6 +16,7 @@ function getOAuthClient(tokens) {
 
 async function startBot(tokens, videoId, userPrompt) {
     console.log(`🤖 Bot started on video: ${videoId}`);
+    console.log(`✅ userPrompt: ${userPrompt}`);
 
     const authClient = getOAuthClient(tokens);
     const youtube = google.youtube({
