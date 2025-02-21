@@ -1,17 +1,20 @@
-
+// src/routes/authRoutes.js
 const express = require("express");
-const { googleAuth, googleCallback, checkStatus, sessionMiddleware } = require("../controllers/authcontroller");
+const passport = require("passport");
+const { googleAuthCallback, logout, getStatus } = require("../controllers/authcontroller");
 
 const router = express.Router();
 
-// Додаємо middleware сесій
-router.use(sessionMiddleware);
+// ✅ Google OAuth маршрути
+router.get("/google", passport.authenticate("google", { scope: ["profile", "email"] }));
 
-// 🔹 Google Auth
-router.get("/google", googleAuth);
-router.get("/google/callback", googleCallback);
+router.get("/google/callback",
+    passport.authenticate("google", { failureRedirect: "/login" }),
+    googleAuthCallback
+);
 
-// 🔹 Перевірка статусу підключення
-router.get("/status", checkStatus);
+router.get("/logout", logout);
+router.get("/status", getStatus);
 
 module.exports = router;
+

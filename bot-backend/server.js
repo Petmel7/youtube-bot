@@ -1,15 +1,20 @@
 
 const express = require("express");
 const cors = require("cors");
-const session = require("express-session");
 const mongoose = require("mongoose");
+const session = require("express-session");
 const MongoStore = require("connect-mongo");
+const passport = require("passport");
 require("dotenv").config();
+
+// ✅ Підключення Passport конфігурації
+require("./src/config/passport");
 
 const authRoutes = require("./src/routes/authRoutes");
 const botRoutes = require("./src/routes/botRoutes");
 const { sessionSecret, mongoUri } = require("./src/config/config");
 
+// ✅ Ініціалізація додатку
 const app = express();
 
 // ✅ Підключення до MongoDB Atlas
@@ -23,7 +28,7 @@ app.use(cors({
     credentials: true
 }));
 
-// ✅ Використання MongoDB для збереження сесій
+// ✅ Налаштування сесій з використанням MongoStore
 app.use(session({
     secret: sessionSecret,
     resave: false,
@@ -40,9 +45,17 @@ app.use(session({
     }
 }));
 
+// ✅ Ініціалізація Passport
+app.use(passport.initialize());
+app.use(passport.session());
+
+// ✅ Підтримка JSON в запитах
 app.use(express.json());
+
+// ✅ Підключення роутів
 app.use("/auth", authRoutes);
 app.use("/bot", botRoutes);
 
+// ✅ Запуск сервера
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
