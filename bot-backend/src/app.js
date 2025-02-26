@@ -119,3 +119,16 @@
 //     googleCallback,
 //     checkStatus
 // };
+
+
+
+
+// function getOAuthClient(tokens) {
+//     const oauth2Client = new google.auth.OAuth2(
+//         googleClientId,
+//         googleClientSecret,
+//         "http://localhost:5000/auth/google/callback"
+//     );
+//     oauth2Client.setCredentials(tokens);
+//     return oauth2Client;
+// }

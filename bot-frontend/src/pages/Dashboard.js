@@ -17,6 +17,8 @@ const Dashboard = () => {
                 });
 
                 const data = await res.json();
+                console.log("data", data);
+                console.log("data.connected", data.connected);
                 setIsConnected(data.connected);
             } catch (error) {
                 console.error("Fetch error:", error);
@@ -46,12 +48,18 @@ const Dashboard = () => {
                 body: JSON.stringify({ videoId, prompt: customPrompt })
             });
 
+            if (!res.ok) {
+                throw new Error(`HTTP error! status: ${res.status}`);
+            }
+
             const data = await res.json();
             console.log("data:", data);
             alert(data.success ? "🤖 Bot finished replying to comments." : "❌ Failed to start bot.");
         } catch (error) {
             console.error("Bot start error:", error);
+            alert("❌ Error starting bot.");
         }
+
     };
 
     return (

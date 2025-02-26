@@ -1,4 +1,3 @@
-
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
@@ -39,18 +38,24 @@ app.use(session({
         ttl: 7 * 24 * 60 * 60  // ⏳ Зберігаємо сесії 7 днів
     }),
     cookie: {
-        secure: false,
+        secure: false,  // ⚠️ Змініть на true для production
         httpOnly: false,
         sameSite: "lax"
     }
 }));
 
-// ✅ Ініціалізація Passport
+// ✅ Ініціалізація Passport (ПЕРЕД роутами)
 app.use(passport.initialize());
 app.use(passport.session());
 
 // ✅ Підтримка JSON в запитах
 app.use(express.json());
+
+// ✅ Логування сесій для діагностики
+app.use((req, res, next) => {
+    console.log("Session:", req.session);
+    next();
+});
 
 // ✅ Підключення роутів
 app.use("/auth", authRoutes);
@@ -59,3 +64,4 @@ app.use("/bot", botRoutes);
 // ✅ Запуск сервера
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+

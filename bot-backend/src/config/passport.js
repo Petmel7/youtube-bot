@@ -8,7 +8,6 @@ const {
     googleRedirectUri
 } = require("../config/config");
 
-// ✅ Налаштування Google Strategy
 passport.use(
     new GoogleStrategy(
         {
@@ -18,16 +17,35 @@ passport.use(
         },
         async (accessToken, refreshToken, profile, done) => {
             try {
-                const user = await User.findOneAndUpdate(
+                let user = await User.findOne({ googleId: profile.id });
+
+                if (!refreshToken && user?.tokens?.refresh_token) {
+                    console.log("🔄 Використовуємо старий refresh_token");
+                    refreshToken = user.tokens.refresh_token;
+                }
+
+                if (!refreshToken) {
+                    throw new Error("❌ Відсутній refresh_token! Видаліть токени та авторизуйтесь знову.");
+                }
+
+                const expiryDate = Date.now() + 3600 * 1000;
+
+                user = await User.findOneAndUpdate(
                     { googleId: profile.id },
                     {
                         googleId: profile.id,
                         name: profile.displayName,
                         email: profile.emails[0].value,
-                        picture: profile.photos[0].value
+                        picture: profile.photos[0].value,
+                        tokens: {
+                            access_token: accessToken,
+                            refresh_token: refreshToken,
+                            expiry_date: expiryDate
+                        }
                     },
                     { upsert: true, new: true }
                 );
+
                 return done(null, user);
             } catch (error) {
                 return done(error, null);
