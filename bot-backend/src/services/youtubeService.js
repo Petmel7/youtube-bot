@@ -6,24 +6,40 @@ const { generateResponse } = require("./geminiService");
 const { googleClientId, googleClientSecret, googleRedirectUri } = require("../config/config");
 
 async function getValidAccessToken(user) {
-    if (!user.tokens.expiry_date) {
-        console.warn("⚠️ expiry_date відсутній у токені, додаємо вручну...");
-        user.tokens.expiry_date = Date.now() + 3600 * 1000;
-        await User.findByIdAndUpdate(user._id, { tokens: user.tokens });
+    if (!user.tokens.refresh_token) {
+        throw new Error("❌ Відсутній refresh_token! Видаліть токени та авторизуйтесь знову.");
     }
 
     if (user.tokens.expiry_date < Date.now()) {
         console.log("🔄 Оновлення access_token...");
+
         const oauth2Client = new google.auth.OAuth2(googleClientId, googleClientSecret, googleRedirectUri);
-        oauth2Client.setCredentials(user.tokens);
+        oauth2Client.setCredentials({ refresh_token: user.tokens.refresh_token });
 
-        const tokenInfo = await oauth2Client.getTokenInfo(user.tokens.access_token);
-        console.log("✅ Token Scopes:", tokenInfo.scope);
+        try {
+            const { credentials } = await oauth2Client.refreshAccessToken();
 
-        const { credentials } = await oauth2Client.refreshAccessToken();
-        credentials.expiry_date = Date.now() + 3600 * 1000;
-        await User.findByIdAndUpdate(user._id, { tokens: credentials });
-        return credentials.access_token;
+            await User.findByIdAndUpdate(user._id, {
+                tokens: {
+                    access_token: credentials.access_token,
+                    refresh_token: user.tokens.refresh_token,
+                    expiry_date: Date.now() + 3600 * 1000
+                }
+            });
+
+            console.log("✅ Токен оновлено!");
+            return credentials.access_token;
+        } catch (error) {
+            console.error("❌ Помилка оновлення токена:", error.response ? error.response.data : error.message);
+
+            if (error.response?.data?.error === "invalid_grant") {
+                console.error("⚠️ `invalid_grant` – Токен відкликано! Видаляю токени...");
+                await User.findByIdAndUpdate(user._id, { $unset: { tokens: "" } });
+                throw new Error("Токен відкликано. Повторна авторизація необхідна.");
+            }
+
+            throw new Error("Не вдалося оновити `access_token`.");
+        }
     }
 
     return user.tokens.access_token;
@@ -34,6 +50,8 @@ async function startBot(user, videoId, userPrompt) {
     console.log(`✅ userPrompt: ${userPrompt}`);
 
     const accessToken = await getValidAccessToken(user);
+    console.log("🔍 Використовується токен:", accessToken);
+
     const authClient = new google.auth.OAuth2(googleClientId, googleClientSecret, googleRedirectUri);
     authClient.setCredentials({ access_token: accessToken });
     const youtube = google.youtube({ version: "v3", auth: authClient });
@@ -69,7 +87,7 @@ async function startBot(user, videoId, userPrompt) {
 }
 
 async function replyToComment(accessToken, commentId, responseText) {
-    const authClient = new google.auth.OAuth2(googleClientID, googleClientSecret, googleCallbackURL);
+    const authClient = new google.auth.OAuth2(googleClientId, googleClientSecret, googleRedirectUri);
     authClient.setCredentials({ access_token: accessToken });
     const youtube = google.youtube({ version: "v3", auth: authClient });
 

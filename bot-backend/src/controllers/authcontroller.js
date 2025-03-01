@@ -1,22 +1,24 @@
 const User = require("../models/User");
 
 const googleAuthCallback = async (req, res) => {
-    try {
-        const user = await User.findById(req.user.id);
-        if (!user) {
-            console.error("❌ Помилка: Користувач не знайдений!");
-            return res.status(404).send("User not found");
-        }
-
-        // ✅ Зберігаємо токени в сесії
-        req.session.tokens = user.tokens;
-        console.log("✅ Токени збережено в сесії:", req.session.tokens);
-
-        res.redirect("http://localhost:3000/dashboard");
-    } catch (error) {
-        console.error("❌ Помилка Google Auth Callback:", error);
-        res.status(500).send("Authentication failed.");
+    if (!req.user) {
+        return res.status(401).json({ error: "Authentication failed!" });
     }
+
+    console.log("🔍 Отримано користувача після авторизації:", req.user);
+
+    // Завантажуємо користувача з бази даних
+    const user = await User.findById(req.user.id);
+    if (!user) {
+        return res.status(401).json({ error: "User not found in database!" });
+    }
+
+    // Зберігаємо токени в сесії
+    req.session.tokens = user.tokens;
+
+    console.log("✅ Сесія оновлена:", req.session);
+
+    res.redirect("http://localhost:3000/dashboard");
 };
 
 const logout = (req, res, next) => {
