@@ -11,6 +11,8 @@ require("./src/config/passport");
 
 const authRoutes = require("./src/routes/authRoutes");
 const botRoutes = require("./src/routes/botRoutes");
+const userPromptRoutes = require("./src/routes/userPromptRoutes");
+
 const { sessionSecret, mongoUri } = require("./src/config/config");
 
 // ✅ Ініціалізація додатку
@@ -60,6 +62,7 @@ app.use((req, res, next) => {
 // ✅ Підключення роутів
 app.use("/auth", authRoutes);
 app.use("/bot", botRoutes);
+app.use("/user-prompt", userPromptRoutes);
 
 // ✅ Запуск сервера
 const PORT = process.env.PORT || 5000;
