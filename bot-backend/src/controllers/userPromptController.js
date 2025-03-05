@@ -1,7 +1,7 @@
 const UserPrompt = require("../models/UserPrompt");
 const { generatePrompt } = require("../config/promptConfig");
 
-const updateUserPrompt = async (req, res) => {
+const addUserPrompt = async (req, res) => {
     try {
         const { channelTheme } = req.body;
         const userId = req.user._id;
@@ -41,4 +41,4 @@ const getUserPrompt = async (req, res) => {
     }
 };
 
-module.exports = { updateUserPrompt, getUserPrompt };
+module.exports = { addUserPrompt, getUserPrompt };

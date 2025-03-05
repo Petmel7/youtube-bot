@@ -10,16 +10,23 @@ async function generateResponse(comment, userPrompt, retries = 5) {
     try {
         const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
         const prompt = `
-        ${userPrompt || "Ты эксперт в своей области. Дай полезный ответ."}
-        Пользователь: ${comment}
-        Ответ:`;
+        ${userPrompt || "You are an expert in your field. Give a helpful answer."}
+        User: ${comment}
+        Answer:`;
 
         const result = await model.generateContent(prompt);
         let response = await result.response.text();
 
-        unwantedPhrases.forEach(phrase => {
-            response = response.replace(new RegExp(phrase, "gi"), "");
-        });
+        if (Array.isArray(unwantedPhrases)) {
+            unwantedPhrases.forEach(phrase => {
+                response = response.replace(new RegExp(phrase, "gi"), "");
+            });
+        }
+
+        if (!response.trim()) {
+            console.error("❌ Generated response is empty. Skipping comment.");
+            return;
+        }
 
         return response.trim();
     } catch (error) {
@@ -30,7 +37,6 @@ async function generateResponse(comment, userPrompt, retries = 5) {
         }
 
         console.error("❌ Error in Gemini API:", error);
-        return "Извините, я не смог сгенерировать ответ.";
     }
 }
 

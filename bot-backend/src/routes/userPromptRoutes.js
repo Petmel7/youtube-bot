@@ -1,10 +1,10 @@
 const express = require("express");
-const { updateUserPrompt, getUserPrompt } = require("../controllers/userPromptController");
+const { addUserPrompt, getUserPrompt } = require("../controllers/userPromptController");
 const { isAuthenticated } = require("../middleware/auth");
 
 const router = express.Router();
 
 router.get("/", isAuthenticated, getUserPrompt);
-router.post("/update", isAuthenticated, updateUserPrompt);
+router.post("/add", isAuthenticated, addUserPrompt);
 
 module.exports = router;

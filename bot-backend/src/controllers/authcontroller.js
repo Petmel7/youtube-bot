@@ -32,6 +32,7 @@ const logout = (req, res, next) => {
 };
 
 const getStatus = (req, res) => {
+    console.log("✅ getStatus req.isAuthenticated()", req.isAuthenticated());
     if (req.isAuthenticated()) {
         res.json({ connected: true, user: req.user });
     } else {
