@@ -2,9 +2,7 @@
 const { startBot } = require("../services/youtubeService");
 
 const startBotController = async (req, res) => {
-    console.log("User:", req.user);
-
-    const user = req.user;  // Використовуємо req.user замість req.session.tokens
+    const user = req.user;
 
     if (!user || !user.tokens) {
         return res.status(401).json({ error: "Unauthorized. No tokens found." });
@@ -17,8 +15,8 @@ const startBotController = async (req, res) => {
     }
 
     try {
-        await startBot(user, videoId, prompt);
-        res.json({ success: true, message: "Bot started!" });
+        const totalReplies = await startBot(user, videoId, prompt);
+        res.json({ success: true, message: `✅ Bot finished replying to ${totalReplies} comments.` });
     } catch (error) {
         console.error("❌ Error starting bot:", error);
         res.status(500).json({ error: "Failed to start bot" });

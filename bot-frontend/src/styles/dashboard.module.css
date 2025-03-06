@@ -1,0 +1,26 @@
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input {
+    padding: 10px;
+    width: 300px;
+    margin-bottom: 10px;
+}
+
+.button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    /* Звичайний курсор */
+    transition: opacity 0.3s ease;
+}
+
+.button:disabled {
+    cursor: not-allowed;
+    /* 🚫 Заборонений курсор */
+    opacity: 0.6;
+    /* Зменшена прозорість */
+}

@@ -58,6 +58,7 @@ async function startBot(user, videoId, userPrompt) {
 
     let nextPageToken = null;
     let totalReplies = 0;
+
     try {
         do {
             const response = await youtube.commentThreads.list({
@@ -81,8 +82,11 @@ async function startBot(user, videoId, userPrompt) {
         } while (nextPageToken);
 
         console.log(`✅ Bot finished replying to ${totalReplies} comments.`);
+        return totalReplies; // Повертаємо кількість відповідей
+
     } catch (error) {
         console.error("❌ Error in bot:", error.response ? error.response.data : error.message);
+        throw error;
     }
 }
 
