@@ -27,3 +27,47 @@ export const fetchAddTheme = async (channelTheme) => {
         return null;
     }
 };
+
+export const fetchUserPrompt = async (setSavedTheme) => {
+    try {
+        const res = await fetch(`${config.backendUrl}/user-prompt`, {
+            method: "GET",
+            credentials: "include",
+            headers: { "Content-Type": "application/json" }
+        });
+
+        const data = await res.json();
+        if (data.success && data.prompt) {
+            setSavedTheme(data.prompt.channelTheme);
+        }
+    } catch (error) {
+        console.error("❌ Error fetching channel theme:", error);
+    }
+};
+
+export const fetchSaveTheme = async (channelTheme, setSavedTheme, setIsEditingTheme) => {
+    if (!channelTheme) {
+        alert("❌ Enter a channel theme!");
+        return;
+    }
+
+    try {
+        const res = await fetch(`${config.backendUrl}/user-prompt/update`, {
+            method: "PUT",
+            credentials: "include",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ channelTheme })
+        });
+
+        const data = await res.json();
+        if (data.success) {
+            setSavedTheme(channelTheme);
+            setIsEditingTheme(false);
+            alert("✅ Channel theme updated successfully!");
+        } else {
+            alert("❌ Failed to update channel theme.");
+        }
+    } catch (error) {
+        console.error("❌ Error updating channel theme:", error);
+    }
+}

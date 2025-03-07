@@ -27,7 +27,10 @@ const logout = (req, res, next) => {
             console.error("Logout error:", err);
             return next(err);
         }
-        res.redirect("/");
+        req.session.destroy(() => {  // Видаляємо сесію
+            res.clearCookie("connect.sid");  // Очищуємо куки сесії
+            res.json({ success: true, message: "Logged out successfully" });
+        });
     });
 };
 

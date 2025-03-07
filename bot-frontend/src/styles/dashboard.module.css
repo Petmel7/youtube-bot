@@ -8,6 +8,12 @@
     padding: 10px;
     width: 300px;
     margin-bottom: 10px;
+    border: 1px solid #ccc;
+    transition: border-color 0.3s ease-in-out;
+}
+
+.inputError {
+    border-color: red;
 }
 
 .button {
@@ -23,4 +29,69 @@
     /* 🚫 Заборонений курсор */
     opacity: 0.6;
     /* Зменшена прозорість */
+}
+
+.error {
+    color: red;
+    font-size: 14px;
+    margin-top: -5px;
+    margin-bottom: 10px;
+}
+
+/* ======================= */
+.themeDisplay {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.themeEditor {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.editButton,
+.saveButton {
+    padding: 5px 10px;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.editButton {
+    background-color: #ffcc00;
+}
+
+.editButton:hover {
+    background-color: #e6b800;
+}
+
+/* ================ */
+.inputContainer {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.saveButton {
+    position: absolute;
+    right: 5px;
+    top: 40%;
+    transform: translateY(-50%);
+    padding: 5px 10px;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.saveButton:hover {
+    background-color: #45a049;
 }
