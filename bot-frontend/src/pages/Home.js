@@ -1,24 +1,10 @@
 
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { fetchAuthStatus } from "../services/authService";
+import { useAuthStatus } from "../hooks/useAuthStatus";
 import config from "../config/config";
 import styles from "../styles/home.module.css";
 
 const Home = () => {
-    const [isConnected, setIsConnected] = useState(null);
-    const navigate = useNavigate();
-
-    useEffect(() => {
-        const checkAuthStatus = async () => {
-            const data = await fetchAuthStatus();
-            setIsConnected(data.connected);
-            if (data.connected) {
-                navigate("/dashboard");
-            }
-        };
-        checkAuthStatus();
-    }, [navigate]);
+    const isConnected = useAuthStatus("/dashboard");
 
     if (isConnected === null) {
         return <p>Loading...</p>;
@@ -36,3 +22,4 @@ const Home = () => {
 };
 
 export default Home;
+

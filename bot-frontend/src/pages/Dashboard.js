@@ -1,5 +1,6 @@
 
 import { useState, useEffect } from "react";
+import { useAuthStatus } from "../hooks/useAuthStatus";
 import { fetchStartBot } from "../services/botService";
 import { validateInputs } from "../validate/validateInputs";
 import { fetchUserPrompt, fetchSaveTheme } from "../services/promptService";
@@ -13,6 +14,7 @@ const Dashboard = () => {
     const [error, setError] = useState({ videoUrl: false, channelTheme: false });
     const [savedTheme, setSavedTheme] = useState(null);
     const [isEditingTheme, setIsEditingTheme] = useState(false);
+    const isConnected = useAuthStatus(null, "/");
 
     useEffect(() => {
         const getUserPrompt = async () => {
@@ -31,6 +33,10 @@ const Dashboard = () => {
         const result = await fetchStartBot(videoUrl, savedTheme || channelTheme, setIsBotRunning);
         alert(result.message);
     };
+
+    if (isConnected === null) {
+        return <p>Loading...</p>;
+    }
 
     return (
         <div className={styles.dashboard}>
