@@ -1,7 +1,8 @@
-import config from "../config/config";
-import { fetchAddTheme } from "./promptService";
 
-export const fetchStartBot = async (videoUrl, channelTheme, setIsBotRunning) => {
+import config from "../config/config";
+import { fetchAddTheme, fetchGetTheme } from "./promptService";
+
+export const fetchStartBot = async (videoUrl, prompt, botGender, setIsBotRunning) => {
     const extractVideoId = (url) => {
         const match = url.match(/(?:v=|\/)([0-9A-Za-z_-]{11})/);
         return match ? match[1] : null;
@@ -13,21 +14,28 @@ export const fetchStartBot = async (videoUrl, channelTheme, setIsBotRunning) => 
         return { success: false, message: "Invalid video URL format!" };
     }
 
-    setIsBotRunning(true); // 🔹 Встановлюємо статус перед початком
+    setIsBotRunning(true);
 
     try {
-        const themeUpdate = await fetchAddTheme(channelTheme);
-        if (!themeUpdate) {
-            console.warn("❌ Не вдалося оновити тематику каналу.");
-            setIsBotRunning(false);
-            return { success: false, message: "Failed to update channel theme!" };
+        const savedTheme = await fetchGetTheme();
+        if (!savedTheme) {
+            console.log("ℹ️ Тематика каналу ще не задана. Додаємо нову...");
+            const addTheme = await fetchAddTheme(prompt.channelTheme, botGender);
+            if (!addTheme) {
+                console.warn("❌ Не вдалося додати тематику каналу.");
+                setIsBotRunning(false);
+                return { success: false, message: "Failed to add channel theme!" };
+            }
+        } else {
+            console.log(`✅ Тематика вже є: ${savedTheme.channelTheme}`);
         }
 
+        // 🔥 Запуск бота з передачею `prompt`
         const res = await fetch(`${config.backendUrl}/bot/start`, {
             method: "POST",
             credentials: "include",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ videoId, prompt: themeUpdate.generalPrompt })
+            body: JSON.stringify({ videoId, prompt: prompt.generalPrompt }) // ✅ Тепер prompt передається
         });
 
         if (!res.ok) {
@@ -40,6 +48,7 @@ export const fetchStartBot = async (videoUrl, channelTheme, setIsBotRunning) => 
         console.error("❌ Bot start error:", error);
         return { success: false, message: "Error starting bot!" };
     } finally {
-        setIsBotRunning(false); // 🔹 Завжди повертаємо стан кнопки
+        setIsBotRunning(false);
     }
 };
+

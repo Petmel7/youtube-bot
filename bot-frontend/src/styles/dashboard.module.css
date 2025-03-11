@@ -52,8 +52,7 @@
     margin-bottom: 15px;
 }
 
-.editButton,
-.saveButton {
+.editButton {
     padding: 5px 10px;
     font-size: 14px;
     cursor: pointer;
@@ -77,11 +76,24 @@
     position: relative;
 }
 
+.saveButtonGeneral {
+    padding: 5px 10px;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    transition: background-color 0.3s ease-in-out;
+    margin-left: 10px;
+}
+
 .saveButton {
     position: absolute;
     right: 5px;
     top: 40%;
     transform: translateY(-50%);
+
     padding: 5px 10px;
     font-size: 14px;
     cursor: pointer;
@@ -94,4 +106,22 @@
 
 .saveButton:hover {
     background-color: #45a049;
+}
+
+.genderSelection {
+    display: flex;
+    align-items: center;
+}
+
+.genderDisplay {
+    display: flex;
+    align-items: center;
+}
+
+.genderDisplay p {
+    margin-right: 10px;
+}
+
+.themeConteaner {
+    width: 300px;
 }

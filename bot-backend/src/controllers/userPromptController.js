@@ -2,14 +2,14 @@
 const UserPrompt = require("../models/UserPrompt");
 const { generatePrompt } = require("../config/promptConfig");
 
-// Додавання нової тематики каналу
 const addUserPrompt = async (req, res) => {
     try {
-        const { channelTheme } = req.body;
+        console.log("📌 Отриманий запит:", req.body);
+        const { channelTheme, genderText } = req.body;  // ✅ Отримуємо ОКРЕМІ значення
         const userId = req.user._id;
 
-        if (!channelTheme) {
-            return res.status(400).json({ error: "Missing channelTheme" });
+        if (!channelTheme || !genderText) {
+            return res.status(400).json({ error: "Missing channelTheme or genderText" });
         }
 
         const existingPrompt = await UserPrompt.findOne({ userId });
@@ -17,8 +17,8 @@ const addUserPrompt = async (req, res) => {
             return res.status(400).json({ error: "User prompt already exists. Use update instead." });
         }
 
-        const generalPrompt = generatePrompt(channelTheme);
-        const newPrompt = new UserPrompt({ userId, channelTheme, generalPrompt });
+        const generalPrompt = generatePrompt(channelTheme, genderText);
+        const newPrompt = new UserPrompt({ userId, channelTheme, genderText, generalPrompt });
 
         await newPrompt.save();
         res.json({ success: true, prompt: newPrompt });
@@ -28,27 +28,26 @@ const addUserPrompt = async (req, res) => {
     }
 };
 
-// Оновлення існуючої тематики каналу
 const updateUserPrompt = async (req, res) => {
     try {
-        const { channelTheme } = req.body;
+        const { channelTheme, genderText } = req.body;
         const userId = req.user._id;
 
-        if (!channelTheme) {
-            return res.status(400).json({ error: "Missing channelTheme" });
+        if (!channelTheme && !genderText) {
+            return res.status(400).json({ error: "Missing channelTheme or genderText" });
         }
 
-        const existingPrompt = await UserPrompt.findOne({ userId });
-        if (!existingPrompt) {
-            return res.status(404).json({ error: "User prompt not found. Use add instead." });
-        }
+        const updateData = {};
+        if (channelTheme) updateData.channelTheme = channelTheme;
+        if (genderText) updateData.genderText = genderText;
 
-        const generalPrompt = generatePrompt(channelTheme);
-        existingPrompt.channelTheme = channelTheme;
-        existingPrompt.generalPrompt = generalPrompt;
+        const updatedPrompt = await UserPrompt.findOneAndUpdate(
+            { userId },
+            updateData,
+            { upsert: true, new: true }
+        );
 
-        await existingPrompt.save();
-        res.json({ success: true, prompt: existingPrompt });
+        res.json({ success: true, prompt: updatedPrompt });
     } catch (error) {
         console.error("❌ Error updating prompt:", error);
         res.status(500).json({ error: "Failed to update prompt" });
@@ -72,5 +71,27 @@ const getUserPrompt = async (req, res) => {
     }
 };
 
-module.exports = { addUserPrompt, updateUserPrompt, getUserPrompt };
+const updateUserGender = async (req, res) => {
+    try {
+        const { genderText } = req.body;
+        const userId = req.user._id;
+
+        if (!genderText) {
+            return res.status(400).json({ error: "Missing genderText" });
+        }
+
+        const updatedPrompt = await UserPrompt.findOneAndUpdate(
+            { userId },
+            { genderText },
+            { new: true }
+        );
+
+        res.json({ success: true, prompt: updatedPrompt });
+    } catch (error) {
+        console.error("❌ Error updating bot gender:", error);
+        res.status(500).json({ error: "Failed to update bot gender" });
+    }
+};
+
+module.exports = { addUserPrompt, updateUserPrompt, getUserPrompt, updateUserGender };
 
