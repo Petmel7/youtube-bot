@@ -1,7 +1,9 @@
 
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAuthStatus } from "../hooks/useAuthStatus";
 import { fetchStartBot } from "../services/botService";
+import { fetchUserData } from "../services/userService";
 import { validateInputs } from "../validate/validateInputs";
 import { fetchUserPrompt, fetchSaveTheme, fetchSaveGender, generateBotPrompt } from "../services/promptService";
 import LogoutButton from "./LogoutButton";
@@ -19,7 +21,19 @@ const Dashboard = () => {
     const [savedGender, setSavedGender] = useState(null);
     const [isEditingTheme, setIsEditingTheme] = useState(false);
     const [isEditingGender, setIsEditingGender] = useState(false);
+    const [userRole, setUserRole] = useState("");
+    const navigate = useNavigate();
     const isConnected = useAuthStatus(null, "/");
+
+    useEffect(() => {
+        const getUserRole = async () => {
+            const userData = await fetchUserData();
+            if (userData) {
+                setUserRole(userData.role);
+            }
+        };
+        getUserRole();
+    }, []);
 
     useEffect(() => {
         const getUserPrompt = async () => {
@@ -60,7 +74,7 @@ const Dashboard = () => {
     }
 
     return (
-        <div className={styles.dashboard}>
+        <div className={styles.dashboardConteaner}>
             <LogoutButton />
             <h1>YouTube Bot Dashboard</h1>
             <p>✅ Connected to YouTube!</p>
@@ -94,6 +108,12 @@ const Dashboard = () => {
                 onChange={(e) => setVideoUrl(e.target.value)}
             />
             {error.videoUrl && <p className={styles.error}>❌ Enter the video link!</p>}
+
+            {userRole === "admin" && (
+                <button className={styles.adminButton} onClick={() => navigate("/admin")}>
+                    🚀 Admin Panel
+                </button>
+            )}
 
             <button
                 className={styles.button}

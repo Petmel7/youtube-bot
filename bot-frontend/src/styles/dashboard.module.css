@@ -1,20 +1,109 @@
-.dashboard {
+/* .dashboardConteaner {
     display: flex;
     flex-direction: column;
     align-items: center;
+} */
+
+.dashboardConteaner h1 {
+    font-size: 24px;
+}
+
+.themeConteaner {
+    width: 100%;
+}
+
+.saveButtonGeneral {
+    padding: 5px 10px;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    transition: background-color 0.3s ease-in-out;
+    margin: 0;
+}
+
+.genderDisplay {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+}
+
+.editButton {
+    padding: 5px 10px;
+    font-size: 14px;
+    width: 120px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #ffcc00;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.editButton:hover {
+    background-color: #e6b800;
+}
+
+.genderSelection {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.genderLabel {
+    display: flex;
+    align-items: center;
+}
+
+.inputContainer {
+    display: flex;
+    align-items: center;
+    position: relative;
 }
 
 .input {
     padding: 10px;
-    width: 300px;
+    width: 100%;
     margin-bottom: 10px;
     border: 1px solid #ccc;
     transition: border-color 0.3s ease-in-out;
+    box-sizing: border-box;
 }
 
 .inputError {
     border-color: red;
 }
+
+.saveButton {
+    position: absolute;
+    right: 5px;
+    top: 40%;
+    transform: translateY(-50%);
+
+    padding: 5px 10px;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    margin: 0;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.saveButton:hover {
+    background-color: #45a049;
+}
+
+.themeDisplay {
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 15px;
+    justify-content: space-between;
+}
+
+/* =================================  */
 
 .button {
     padding: 10px 20px;
@@ -38,90 +127,24 @@
     margin-bottom: 10px;
 }
 
-/* ======================= */
-.themeDisplay {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 15px;
-}
-
 .themeEditor {
     display: flex;
     gap: 10px;
     margin-bottom: 15px;
 }
 
-.editButton {
-    padding: 5px 10px;
-    font-size: 14px;
-    cursor: pointer;
-    border: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease-in-out;
-}
-
-.editButton {
+.adminButton {
     background-color: #ffcc00;
-}
-
-.editButton:hover {
-    background-color: #e6b800;
-}
-
-/* ================ */
-.inputContainer {
-    display: flex;
-    align-items: center;
-    position: relative;
-}
-
-.saveButtonGeneral {
-    padding: 5px 10px;
-    font-size: 14px;
-    cursor: pointer;
+    color: #000;
+    font-weight: bold;
+    padding: 10px 20px;
     border: none;
     border-radius: 5px;
-    background-color: #4CAF50;
-    color: white;
-    transition: background-color 0.3s ease-in-out;
-    margin-left: 10px;
-}
-
-.saveButton {
-    position: absolute;
-    right: 5px;
-    top: 40%;
-    transform: translateY(-50%);
-
-    padding: 5px 10px;
-    font-size: 14px;
     cursor: pointer;
-    border: none;
-    border-radius: 5px;
-    background-color: #4CAF50;
-    color: white;
-    transition: background-color 0.3s ease-in-out;
+    margin-bottom: 10px;
+    transition: background 0.3s;
 }
 
-.saveButton:hover {
-    background-color: #45a049;
-}
-
-.genderSelection {
-    display: flex;
-    align-items: center;
-}
-
-.genderDisplay {
-    display: flex;
-    align-items: center;
-}
-
-.genderDisplay p {
-    margin-right: 10px;
-}
-
-.themeConteaner {
-    width: 300px;
+.adminButton:hover {
+    background-color: #ffaa00;
 }

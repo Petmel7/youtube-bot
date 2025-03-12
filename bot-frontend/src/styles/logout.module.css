@@ -1,5 +1,5 @@
-/* .logoutButton {
-    padding: 10px 15px;
+.logoutButton {
+    padding: 3px 6px;
     font-size: 16px;
     background-color: red;
     color: white;
@@ -10,4 +10,4 @@
 
 .logoutButton:hover {
     background-color: darkred;
-} */
+}

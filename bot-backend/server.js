@@ -11,6 +11,7 @@ require("./src/config/passport");
 
 const authRoutes = require("./src/routes/authRoutes");
 const botRoutes = require("./src/routes/botRoutes");
+const userRoutes = require("./src/routes/userRoutes");
 const userPromptRoutes = require("./src/routes/userPromptRoutes");
 
 const { sessionSecret, mongoUri } = require("./src/config/config");
@@ -62,6 +63,7 @@ app.use((req, res, next) => {
 // ✅ Підключення роутів
 app.use("/auth", authRoutes);
 app.use("/bot", botRoutes);
+app.use("/user", userRoutes);
 app.use("/user-prompt", userPromptRoutes);
 
 // ✅ Запуск сервера

@@ -5,7 +5,7 @@ const { generatePrompt } = require("../config/promptConfig");
 const addUserPrompt = async (req, res) => {
     try {
         console.log("📌 Отриманий запит:", req.body);
-        const { channelTheme, genderText } = req.body;  // ✅ Отримуємо ОКРЕМІ значення
+        const { channelTheme, genderText } = req.body;
         const userId = req.user._id;
 
         if (!channelTheme || !genderText) {

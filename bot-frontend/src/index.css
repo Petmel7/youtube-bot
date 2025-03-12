@@ -11,8 +11,14 @@ button {
     font-size: 16px;
     cursor: pointer;
     margin-top: 20px;
+    border-radius: 5px;
 }
 
 button:hover {
     background-color: #0056b3;
+}
+
+.conteaner {
+    width: 350px;
+    margin: 0 auto;
 }

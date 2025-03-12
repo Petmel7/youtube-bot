@@ -13,7 +13,7 @@ const Gender = ({
             {isEditingGender ? (
                 <div className={styles.genderSelection}>
                     <p>Select bot identity:</p>
-                    <label>
+                    <label className={styles.genderLabel}>
                         <input
                             type="radio"
                             value="male"
@@ -22,7 +22,7 @@ const Gender = ({
                         />
                         Male
                     </label>
-                    <label>
+                    <label className={styles.genderLabel}>
                         <input
                             type="radio"
                             value="female"
