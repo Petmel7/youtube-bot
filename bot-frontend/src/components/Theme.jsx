@@ -1,3 +1,5 @@
+
+import ThemeInput from "./ThemeInput";
 import styles from "../styles/dashboard.module.css";
 
 const Theme = ({
@@ -7,18 +9,14 @@ const Theme = ({
     setChannelTheme,
     savedTheme,
     saveTheme,
-    setIsEditingTheme }) => {
+    setIsEditingTheme
+}) => {
+
     return (
         <>
             {isEditingTheme ? (
                 <div className={styles.inputContainer}>
-                    <input
-                        className={`${styles.input} ${error.channelTheme ? styles.inputError : ""}`}
-                        type="text"
-                        placeholder="Enter new channel theme"
-                        value={channelTheme}
-                        onChange={(e) => setChannelTheme(e.target.value)}
-                    />
+                    <ThemeInput channelTheme={channelTheme} setChannelTheme={setChannelTheme} error={error} />
                     <button className={styles.saveButton} onClick={saveTheme}>Save</button>
                 </div>
             ) : savedTheme ? (
@@ -28,17 +26,11 @@ const Theme = ({
                 </div>
             ) : (
                 <div>
-                    <input
-                        className={`${styles.input} ${error.channelTheme ? styles.inputError : ""}`}
-                        type="text"
-                        placeholder="Enter channel theme"
-                        value={channelTheme}
-                        onChange={(e) => setChannelTheme(e.target.value)}
-                    />
+                    <ThemeInput channelTheme={channelTheme} setChannelTheme={setChannelTheme} error={error} />
                 </div>
             )}
         </>
-    )
-}
+    );
+};
 
 export default Theme;

@@ -1,14 +1,15 @@
 
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { useAuthStatus } from "../hooks/useAuthStatus";
 import { fetchStartBot } from "../services/botService";
 import { fetchUserData } from "../services/userService";
 import { validateInputs } from "../validate/validateInputs";
 import { fetchUserPrompt, fetchSaveTheme, fetchSaveGender, generateBotPrompt } from "../services/promptService";
-import LogoutButton from "./LogoutButton";
-import Gender from "./Gender";
-import Theme from "./Theme";
+import LogoutButton from "../components/LogoutButton";
+import Gender from "../components/Gender";
+import Theme from "../components/Theme";
+import AdminButton from "../components/AdminButton";
+import BotStarter from "../components/BotStarter";
 import styles from "../styles/dashboard.module.css";
 
 const Dashboard = () => {
@@ -22,7 +23,6 @@ const Dashboard = () => {
     const [isEditingTheme, setIsEditingTheme] = useState(false);
     const [isEditingGender, setIsEditingGender] = useState(false);
     const [userRole, setUserRole] = useState("");
-    const navigate = useNavigate();
     const isConnected = useAuthStatus(null, "/");
 
     useEffect(() => {
@@ -100,28 +100,15 @@ const Dashboard = () => {
                 }} />
             </div>
 
-            <input
-                className={`${styles.input} ${error.videoUrl ? styles.inputError : ""}`}
-                type="text"
-                placeholder="Enter YouTube video URL"
-                value={videoUrl}
-                onChange={(e) => setVideoUrl(e.target.value)}
-            />
-            {error.videoUrl && <p className={styles.error}>❌ Enter the video link!</p>}
+            <BotStarter {...{
+                error,
+                videoUrl,
+                setVideoUrl,
+                startBot,
+                isBotRunning
+            }} />
 
-            {userRole === "admin" && (
-                <button className={styles.adminButton} onClick={() => navigate("/admin")}>
-                    🚀 Admin Panel
-                </button>
-            )}
-
-            <button
-                className={styles.button}
-                onClick={startBot}
-                disabled={isBotRunning}
-            >
-                {isBotRunning ? "🤖 Bot is replying..." : "🤖 Start Bot"}
-            </button>
+            <AdminButton userRole={userRole} />
         </div>
     );
 };

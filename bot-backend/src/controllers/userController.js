@@ -1,16 +1,17 @@
-const User = require("../models/User");
+
+const { fetchAllUsers } = require("../services/userService");
 
 const getUsers = async (req, res) => {
     try {
-        const users = await User.find({}, "name email role createdAt");
+        const users = await fetchAllUsers();
 
-        if (!users || users.length === 0) {
+        if (!users) {
             return res.status(404).json({ error: "No users found" });
         }
 
         res.json({ success: true, users });
     } catch (error) {
-        console.error("❌ Error fetching users:", error);
+        console.error("❌ Error in getUsers controller:", error);
         res.status(500).json({ error: "Failed to fetch users" });
     }
 };

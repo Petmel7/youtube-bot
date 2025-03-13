@@ -1,60 +1,36 @@
+
 const express = require("express");
-const cors = require("cors");
-const mongoose = require("mongoose");
-const session = require("express-session");
-const MongoStore = require("connect-mongo");
 const passport = require("passport");
 require("dotenv").config();
+
+// ✅ Імпорти конфігурацій
+const connectDB = require("./src/config/db");
+const sessionMiddleware = require("./src/config/session");
+const corsMiddleware = require("./src/config/cors");
 
 // ✅ Підключення Passport конфігурації
 require("./src/config/passport");
 
+// ✅ Імпорти маршрутів
 const authRoutes = require("./src/routes/authRoutes");
 const botRoutes = require("./src/routes/botRoutes");
 const userRoutes = require("./src/routes/userRoutes");
 const userPromptRoutes = require("./src/routes/userPromptRoutes");
 
-const { sessionSecret, mongoUri } = require("./src/config/config");
-
 // ✅ Ініціалізація додатку
 const app = express();
 
-// ✅ Підключення до MongoDB Atlas
-mongoose.connect(mongoUri)
-    .then(() => console.log("✅ Connected to MongoDB Atlas"))
-    .catch(err => console.error("❌ MongoDB connection error:", err));
+// ✅ Підключення до MongoDB
+connectDB();
 
-// ✅ Налаштування CORS
-app.use(cors({
-    origin: "http://localhost:3000",
-    credentials: true
-}));
-
-// ✅ Налаштування сесій з використанням MongoStore
-app.use(session({
-    secret: sessionSecret,
-    resave: false,
-    saveUninitialized: false,
-    store: MongoStore.create({
-        mongoUrl: mongoUri,
-        collectionName: "sessions",
-        ttl: 7 * 24 * 60 * 60  // ⏳ Зберігаємо сесії 7 днів
-    }),
-    cookie: {
-        secure: false,  // ⚠️ Змініть на true для production
-        httpOnly: false,
-        sameSite: "lax"
-    }
-}));
-
-// ✅ Ініціалізація Passport (ПЕРЕД роутами)
+// ✅ Налаштування middleware
+app.use(corsMiddleware);
+app.use(express.json());
+app.use(sessionMiddleware);
 app.use(passport.initialize());
 app.use(passport.session());
 
-// ✅ Підтримка JSON в запитах
-app.use(express.json());
-
-// ✅ Логування сесій для діагностики
+// ✅ Логування сесій (для діагностики)
 app.use((req, res, next) => {
     console.log("Session:", req.session);
     next();
@@ -69,4 +45,3 @@ app.use("/user-prompt", userPromptRoutes);
 // ✅ Запуск сервера
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
-
