@@ -1,14 +1,27 @@
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { fetchUserRole } from "../services/userService";
 import styles from "../styles/dashboard.module.css";
 
-const AdminButton = ({ userRole }) => {
+const AdminButton = () => {
+    const [userRole, setUserRole] = useState("");
     const navigate = useNavigate();
+
+    useEffect(() => {
+        const getUserRole = async () => {
+            const userData = await fetchUserRole();
+            if (userData) {
+                setUserRole(userData.role);
+            }
+        };
+        getUserRole();
+    }, []);
 
     return (
         <>
             {userRole === "admin" && (
                 <button className={styles.adminButton} onClick={() => navigate("/admin")}>
-                    🚀 Admin Panel
+                    Admin
                 </button>
             )}
         </>

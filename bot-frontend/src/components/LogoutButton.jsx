@@ -17,7 +17,7 @@ const LogoutButton = () => {
 
     return (
         <button className={styles.logoutButton} onClick={handleLogout}>
-            🚪 Logout
+            Logout
         </button>
     );
 };

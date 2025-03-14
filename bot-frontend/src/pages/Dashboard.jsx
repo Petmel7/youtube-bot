@@ -2,14 +2,13 @@
 import { useState, useEffect } from "react";
 import { useAuthStatus } from "../hooks/useAuthStatus";
 import { fetchStartBot } from "../services/botService";
-import { fetchUserData } from "../services/userService";
 import { validateInputs } from "../validate/validateInputs";
 import { fetchUserPrompt, fetchSaveTheme, fetchSaveGender, generateBotPrompt } from "../services/promptService";
-import LogoutButton from "../components/LogoutButton";
 import Gender from "../components/Gender";
 import Theme from "../components/Theme";
 import AdminButton from "../components/AdminButton";
 import BotStarter from "../components/BotStarter";
+import Header from "../components/Header";
 import styles from "../styles/dashboard.module.css";
 
 const Dashboard = () => {
@@ -22,18 +21,7 @@ const Dashboard = () => {
     const [savedGender, setSavedGender] = useState(null);
     const [isEditingTheme, setIsEditingTheme] = useState(false);
     const [isEditingGender, setIsEditingGender] = useState(false);
-    const [userRole, setUserRole] = useState("");
     const isConnected = useAuthStatus(null, "/");
-
-    useEffect(() => {
-        const getUserRole = async () => {
-            const userData = await fetchUserData();
-            if (userData) {
-                setUserRole(userData.role);
-            }
-        };
-        getUserRole();
-    }, []);
 
     useEffect(() => {
         const getUserPrompt = async () => {
@@ -75,9 +63,9 @@ const Dashboard = () => {
 
     return (
         <div className={styles.dashboardConteaner}>
-            <LogoutButton />
+            <Header />
+
             <h1>YouTube Bot Dashboard</h1>
-            <p>✅ Connected to YouTube!</p>
 
             <div className={styles.themeConteaner}>
                 <Gender {...{
@@ -107,8 +95,6 @@ const Dashboard = () => {
                 startBot,
                 isBotRunning
             }} />
-
-            <AdminButton userRole={userRole} />
         </div>
     );
 };

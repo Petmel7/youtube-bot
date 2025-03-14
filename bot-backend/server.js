@@ -33,6 +33,7 @@ app.use(passport.session());
 // ✅ Логування сесій (для діагностики)
 app.use((req, res, next) => {
     console.log("Session:", req.session);
+    console.log("User:", req.user);
     next();
 });
 

@@ -16,6 +16,22 @@ const getUsers = async (req, res) => {
     }
 };
 
+const getUser = async (req, res) => {
+    try {
+        console.log("📌 Session:", req.session);
+        console.log("📌 User from session:", req.user);
+
+        if (!req.user) {
+            return res.status(401).json({ error: "Unauthorized" });
+        }
+
+        res.json({ success: true, user: req.user });
+    } catch (error) {
+        console.error("❌ Error fetching user role:", error);
+        res.status(500).json({ error: "Failed to fetch user" });
+    }
+};
+
 const getUserRole = async (req, res) => {
     try {
         const user = req.user;
@@ -30,4 +46,4 @@ const getUserRole = async (req, res) => {
     }
 };
 
-module.exports = { getUserRole, getUsers };
+module.exports = { getUserRole, getUsers, getUser };
