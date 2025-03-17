@@ -1,3 +1,4 @@
+
 import GenderRadioGroup from "./GenderRadioGroup";
 import styles from "../styles/dashboard.module.css";
 
@@ -15,12 +16,12 @@ const Gender = ({
             {isEditingGender ? (
                 <div className={styles.genderSelection}>
                     <GenderRadioGroup botGender={botGender} setBotGender={setBotGender} />
-                    <button className={styles.saveButtonGeneral} onClick={saveGender}>Save</button>
+                    <button className={`${styles.saveButton} ${styles.editAndSaveButton}`} onClick={saveGender}>Save</button>
                 </div>
             ) : savedGender ? (
                 <div className={styles.genderDisplay}>
                     <p>Bot identity: <strong>{savedGender === "male" ? "Male" : "Female"}</strong></p>
-                    <button className={styles.editButton} onClick={() => setIsEditingGender(true)}>Change Gender</button>
+                    <button className={`${styles.editButton} ${styles.editAndSaveButton}`} onClick={() => setIsEditingGender(true)}>Change Gender</button>
                 </div>
             ) : (
                 <div className={styles.genderSelection}>

@@ -6,7 +6,6 @@ import { validateInputs } from "../validate/validateInputs";
 import { fetchUserPrompt, fetchSaveTheme, fetchSaveGender, generateBotPrompt } from "../services/promptService";
 import Gender from "../components/Gender";
 import Theme from "../components/Theme";
-import AdminButton from "../components/AdminButton";
 import BotStarter from "../components/BotStarter";
 import Header from "../components/Header";
 import styles from "../styles/dashboard.module.css";

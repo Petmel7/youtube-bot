@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { fetchUserRole } from "../services/userService";
-import styles from "../styles/dashboard.module.css";
+import styles from "../styles/admin.module.css";
 
 const AdminButton = () => {
     const [userRole, setUserRole] = useState("");

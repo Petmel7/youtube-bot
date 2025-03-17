@@ -1,4 +1,5 @@
 import styles from "../styles/dashboard.module.css";
+import { SiProbot } from "react-icons/si";
 
 const BotStarter = ({ error, videoUrl, setVideoUrl, startBot, isBotRunning }) => (
     <>
@@ -16,7 +17,8 @@ const BotStarter = ({ error, videoUrl, setVideoUrl, startBot, isBotRunning }) =>
             onClick={startBot}
             disabled={isBotRunning}
         >
-            {isBotRunning ? "🤖 Bot is replying..." : "🤖 Start Bot"}
+            <SiProbot className={styles.botIcon} />
+            {isBotRunning ? "Bot is replying..." : "Start Bot"}
         </button>
     </>
 )

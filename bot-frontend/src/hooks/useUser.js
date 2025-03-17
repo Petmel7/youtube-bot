@@ -11,7 +11,7 @@ const useUser = () => {
             try {
                 const userData = await fetchUserData();
                 if (userData) {
-                    setUser(userData);
+                    setUser({ ...userData }); // 🔹 Примусове оновлення стану
                 }
             } catch (err) {
                 setError("Failed to fetch user data.");
@@ -26,3 +26,4 @@ const useUser = () => {
 };
 
 export default useUser;
+

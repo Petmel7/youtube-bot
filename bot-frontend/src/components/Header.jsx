@@ -10,9 +10,9 @@ const Header = () => {
     const { user, loading, error } = useUser();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-    if (loading) return <p>Loading...</p>;
+    if (loading || !user) return <p>Loading...</p>;
     if (error) return <p>{error}</p>;
-
+    console.log("user", user.picture);
     return (
         <header className={styles.header}>
             <div
@@ -21,7 +21,13 @@ const Header = () => {
                 onMouseLeave={() => setIsMenuOpen(false)}
             >
                 <FaYoutube className={styles.headerIcon} />
-                <h3>Connected to {user.name}</h3>
+                <h3>Connected to</h3>
+
+                {user?.picture && (
+                    <img key={user.picture} src={user.picture} alt="User Avatar" className={styles.userAvatar} />
+                )}
+
+                <p className={styles.name}>{user.name}</p>
 
                 {isMenuOpen && (
                     <div className={styles.dropdownMenu}>
