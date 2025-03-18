@@ -1,5 +1,7 @@
 
 import GenderRadioGroup from "./GenderRadioGroup";
+import Tooltip from "./Tooltip";
+import useTooltip from "../hooks/useTooltip";
 import styles from "../styles/dashboard.module.css";
 
 const Gender = ({
@@ -11,12 +13,24 @@ const Gender = ({
     setIsEditingGender
 }) => {
 
+    const { isTooltipOpen, showTooltip, hideTooltip } = useTooltip();
+
     return (
         <>
             {isEditingGender ? (
-                <div className={styles.genderSelection}>
+                <div onMouseEnter={showTooltip} onMouseLeave={hideTooltip} className={styles.genderSelection}>
                     <GenderRadioGroup botGender={botGender} setBotGender={setBotGender} />
-                    <button className={`${styles.saveButton} ${styles.editAndSaveButton}`} onClick={saveGender}>Save</button>
+                    <div
+                        className={`${styles.saveButton}
+                        ${styles.editAndSaveButton}
+                        ${styles.saveButtonSpecial}`}
+                    >
+                        Save
+                    </div>
+                    <Tooltip isTooltipOpen={isTooltipOpen}>
+                        <button className={styles.cancelButton} onClick={() => setIsEditingGender(false)} >Cancel</button>
+                        <button className={`${styles.saveButton} ${styles.editAndSaveButton} ${styles.saveButtonSpecial}`} onClick={saveGender}>Save</button>
+                    </Tooltip>
                 </div>
             ) : savedGender ? (
                 <div className={styles.genderDisplay}>
