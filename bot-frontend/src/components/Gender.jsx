@@ -1,4 +1,4 @@
-
+import { FaMale, FaFemale } from "react-icons/fa";
 import GenderRadioGroup from "./GenderRadioGroup";
 import Tooltip from "./Tooltip";
 import useTooltip from "../hooks/useTooltip";
@@ -29,12 +29,15 @@ const Gender = ({
                     </div>
                     <Tooltip isTooltipOpen={isTooltipOpen}>
                         <button className={styles.cancelButton} onClick={() => setIsEditingGender(false)} >Cancel</button>
-                        <button className={`${styles.saveButton} ${styles.editAndSaveButton} ${styles.saveButtonSpecial}`} onClick={saveGender}>Save</button>
+                        <button className={`${styles.saveButton} ${styles.editAndSaveButton}`} onClick={saveGender}>Save</button>
                     </Tooltip>
                 </div>
             ) : savedGender ? (
                 <div className={styles.genderDisplay}>
-                    <p>Bot identity: <strong>{savedGender === "male" ? "Male" : "Female"}</strong></p>
+                    <div className={styles.genderAndThemeInfo}>
+                        <p className={styles.genderAndThemeIcon}>{savedGender === "male" ? <FaMale /> : <FaFemale />}</p>
+                        <p>Bot identity: <strong>{savedGender === "male" ? "Male" : "Female"}</strong></p>
+                    </div>
                     <button className={`${styles.editButton} ${styles.editAndSaveButton}`} onClick={() => setIsEditingGender(true)}>Change Gender</button>
                 </div>
             ) : (

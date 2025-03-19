@@ -1,5 +1,6 @@
 .dashboardConteaner h1 {
     font-size: 24px;
+    text-align: center;
 }
 
 .themeConteaner {
@@ -12,6 +13,16 @@
     justify-content: space-between;
 }
 
+.genderAndThemeInfo {
+    display: flex;
+    align-items: center;
+}
+
+.genderAndThemeIcon {
+    color: #ff0033;
+    margin-right: 5px;
+}
+
 .editButton {
     padding: 5px 10px;
     font-size: 14px;
@@ -19,24 +30,14 @@
 }
 
 .saveButton {
-    padding: 5px 10px;
+    padding: 5px 16px;
     font-size: 14px;
 }
 
 .cancelButton {
     padding: 5px 10px;
     font-size: 14px;
-    cursor: pointer;
-    border: none;
-    border-radius: 5px;
     margin-right: 5px;
-    color: black;
-    background-color: #ff0033;
-    transition: background-color 0.3s ease-in-out;
-}
-
-.cancelButton:hover {
-    background-color: #de002c;
 }
 
 .saveButtonSpecial {
@@ -79,6 +80,10 @@
     display: flex;
     align-items: center;
     position: relative;
+}
+
+.botContainer {
+    text-align: center;
 }
 
 .input {
@@ -158,7 +163,8 @@
 }
 
 .selected {
-    background-color: #007bff;
+    background-color: #ff0033;
     color: white;
-    border-color: #0056b3;
+    border-color: #ff0033;
+    ;
 }

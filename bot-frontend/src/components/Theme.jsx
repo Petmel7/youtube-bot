@@ -1,4 +1,4 @@
-
+import { FaPlayCircle } from "react-icons/fa";
 import ThemeInput from "./ThemeInput";
 import Tooltip from "./Tooltip";
 import useTooltip from "../hooks/useTooltip";
@@ -30,12 +30,15 @@ const Theme = ({
                     </div>
                     <Tooltip isTooltipOpen={isTooltipOpen}>
                         <button className={styles.cancelButton} onClick={() => setIsEditingTheme(false)} >Cancel</button>
-                        <button className={`${styles.saveInputButton} ${styles.saveButton} ${styles.editAndSaveButton}`} onClick={saveTheme}>Save</button>
+                        <button className={`${styles.saveButton} ${styles.editAndSaveButton}`} onClick={saveTheme}>Save</button>
                     </Tooltip>
                 </div>
             ) : savedTheme ? (
                 <div className={styles.themeDisplay}>
-                    <p>Channel theme: <strong>{savedTheme}</strong></p>
+                    <div className={styles.genderAndThemeInfo}>
+                        <FaPlayCircle className={styles.genderAndThemeIcon} />
+                        <p>Channel theme: <strong>{savedTheme}</strong></p>
+                    </div>
                     <button className={`${styles.editButton} ${styles.editAndSaveButton}`} onClick={() => setIsEditingTheme(true)}>Change Theme</button>
                 </div>
             ) : (

@@ -89,7 +89,6 @@ export const fetchSaveTheme = async (channelTheme, setSavedTheme, setIsEditingTh
         if (data.success) {
             setSavedTheme(channelTheme);
             setIsEditingTheme(false);
-            alert("✅ Channel theme updated successfully!");
         } else {
             alert("❌ Failed to update channel theme.");
         }
@@ -133,7 +132,6 @@ export const fetchSaveGender = async (botGender, setSavedGender, setIsEditingGen
         if (data.success) {
             setSavedGender(botGender);
             setIsEditingGender(false);
-            alert("✅ Bot gender updated successfully!");
         } else {
             alert("❌ Failed to update bot gender.");
         }
