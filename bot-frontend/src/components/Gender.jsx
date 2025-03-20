@@ -20,13 +20,7 @@ const Gender = ({
             {isEditingGender ? (
                 <div onMouseEnter={showTooltip} onMouseLeave={hideTooltip} className={styles.genderSelection}>
                     <GenderRadioGroup botGender={botGender} setBotGender={setBotGender} />
-                    <div
-                        className={`${styles.saveButton}
-                        ${styles.editAndSaveButton}
-                        ${styles.saveButtonSpecial}`}
-                    >
-                        Save
-                    </div>
+
                     <Tooltip isTooltipOpen={isTooltipOpen}>
                         <button className={styles.cancelButton} onClick={() => setIsEditingGender(false)} >Cancel</button>
                         <button className={`${styles.saveButton} ${styles.editAndSaveButton}`} onClick={saveGender}>Save</button>

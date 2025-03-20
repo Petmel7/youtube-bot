@@ -21,13 +21,7 @@ const Theme = ({
             {isEditingTheme ? (
                 <div onMouseEnter={showTooltip} onMouseLeave={hideTooltip} className={styles.inputContainer}>
                     <ThemeInput channelTheme={channelTheme} setChannelTheme={setChannelTheme} error={error} />
-                    <div
-                        className={`${styles.saveInputButton} 
-                        ${styles.saveButton} 
-                        ${styles.editAndSaveButton}`}
-                    >
-                        Save
-                    </div>
+
                     <Tooltip isTooltipOpen={isTooltipOpen}>
                         <button className={styles.cancelButton} onClick={() => setIsEditingTheme(false)} >Cancel</button>
                         <button className={`${styles.saveButton} ${styles.editAndSaveButton}`} onClick={saveTheme}>Save</button>
