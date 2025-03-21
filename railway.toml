@@ -1,8 +1,0 @@
-[service]
-name = "backend"
-
-[build]
-command = "cd bot-backend && npm install"
-
-[start]
-command = "cd bot-backend && npm start"
