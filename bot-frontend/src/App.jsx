@@ -7,7 +7,7 @@ import "./index.css";
 
 function App() {
     return (
-        <div className="conteaner">
+        <div className="container">
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/dashboard" element={<Dashboard />} />
@@ -18,4 +18,3 @@ function App() {
 }
 
 export default App;
-

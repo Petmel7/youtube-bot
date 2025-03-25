@@ -5,6 +5,7 @@ import useTooltip from "../hooks/useTooltip";
 import LogoutButton from "./LogoutButton";
 import AdminButton from "./AdminButton";
 import Tooltip from "./Tooltip";
+import ThemeIcon from "./ThemeIcon";
 import styles from "../styles/header.module.css";
 
 const Header = () => {
@@ -33,6 +34,7 @@ const Header = () => {
                 <Tooltip isTooltipOpen={isTooltipOpen}>
                     <AdminButton />
                     <LogoutButton />
+                    <ThemeIcon />
                 </Tooltip>
             </div>
         </header>

@@ -1,5 +1,15 @@
+/* Світла тема (за замовчуванням) */
 body {
     font-family: Arial, sans-serif;
+    background-color: white;
+    color: black;
+    transition: background 0.3s, color 0.3s;
+}
+
+/* Темна тема */
+body.dark {
+    background-color: #121212;
+    color: white;
 }
 
 button {
@@ -17,7 +27,18 @@ button:hover {
     background-color: #3f3f3f;
 }
 
-.conteaner {
+/* Кнопка перемикання теми */
+.theme-toggle {
+    width: 30px;
+    height: 30px;
+    color: #0f0f0f;
+}
+
+.theme-toggle:hover {
+    color: #3f3f3f;
+}
+
+.container {
     width: 350px;
     margin: 0 auto;
 }
