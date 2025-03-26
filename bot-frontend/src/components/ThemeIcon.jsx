@@ -16,9 +16,9 @@ function ThemeIcon() {
     };
 
     return (
-        <span onClick={toggleTheme} className="theme-toggle">
+        <div onClick={toggleTheme} className="theme-toggle">
             {theme === "light" ? <IoMdMoon /> : <IoMdSunny />}
-        </span>
+        </div>
     );
 }
 

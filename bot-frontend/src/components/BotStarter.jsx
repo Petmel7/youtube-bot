@@ -13,7 +13,8 @@ const BotStarter = ({ error, videoUrl, setVideoUrl, startBot, isBotRunning }) =>
         {error.videoUrl && <p className={styles.error}>❌ Enter the video link!</p>}
 
         <button
-            className={styles.button}
+            className="button"
+            // className={styles.button}
             onClick={startBot}
             disabled={isBotRunning}
         >

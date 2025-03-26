@@ -35,6 +35,10 @@
 }
 
 .cancelButton {
+    background-color: #0f0f0f;
+    color: white;
+    border: none;
+    border-radius: 5px;
     padding: 5px 10px;
     font-size: 14px;
     margin-right: 5px;

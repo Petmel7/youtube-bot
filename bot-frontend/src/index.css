@@ -12,7 +12,7 @@ body.dark {
     color: white;
 }
 
-button {
+.button {
     background-color: #0f0f0f;
     color: white;
     border: none;
@@ -23,15 +23,19 @@ button {
     transition: background 0.3s;
 }
 
-button:hover {
+/* Стилі кнопки в темній темі */
+body.dark .button {
+    background-color: #272727;
+}
+
+.button:hover {
     background-color: #3f3f3f;
 }
 
 /* Кнопка перемикання теми */
 .theme-toggle {
-    width: 30px;
-    height: 30px;
     color: #0f0f0f;
+    margin-left: auto;
 }
 
 .theme-toggle:hover {
