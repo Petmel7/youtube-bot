@@ -19,7 +19,7 @@ const Home = () => {
             </div>
             <p>Automatically reply to comments on your YouTube channel.</p>
             <a href={`${config.backendUrl}/auth/google`}>
-                <button className={styles.button}>Connect YouTube</button>
+                <button className="button">Connect YouTube</button>
             </a>
         </div>
     );

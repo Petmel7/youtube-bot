@@ -28,6 +28,11 @@ body.dark .button {
     background-color: #272727;
 }
 
+body.dark .input-dark {
+    background-color: #272727;
+    color: white;
+}
+
 .button:hover {
     background-color: #3f3f3f;
 }

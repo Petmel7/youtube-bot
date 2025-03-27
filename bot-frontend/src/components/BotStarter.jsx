@@ -4,7 +4,7 @@ import { SiProbot } from "react-icons/si";
 const BotStarter = ({ error, videoUrl, setVideoUrl, startBot, isBotRunning }) => (
     <div className={styles.botContainer}>
         <input
-            className={`${styles.input} ${error.videoUrl ? styles.inputError : ""}`}
+            className={`${styles.input} ${error.videoUrl ? styles.inputError : ""} input-dark`}
             type="text"
             placeholder="Enter YouTube video URL"
             value={videoUrl}
