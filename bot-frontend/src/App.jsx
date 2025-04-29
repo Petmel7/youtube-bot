@@ -1,5 +1,5 @@
 
-import { Route, Routes, Link } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
 import Admin from "./pages/Admin";
@@ -17,10 +17,6 @@ function App() {
                 <Route path="/privacy-policy" element={<PrivacyPolicy />} />
                 <Route path="/terms" element={<Terms />} />
             </Routes>
-            <footer style={{ textAlign: 'center', margin: 20 }}>
-                <Link to="/privacy-policy">Privacy Policy</Link> |{' '}
-                <Link to="/terms">Terms of Service</Link>
-            </footer>
         </div>
     );
 }

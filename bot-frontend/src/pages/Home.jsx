@@ -1,4 +1,4 @@
-
+import { Link } from "react-router-dom";
 import { useAuthStatus } from "../hooks/useAuthStatus";
 import { FaYoutube } from "react-icons/fa";
 import config from "../config/config";
@@ -21,6 +21,10 @@ const Home = () => {
             <a href={`${config.backendUrl}/auth/google`}>
                 <button className="button">Connect YouTube</button>
             </a>
+            <div style={{ textAlign: 'center', margin: 20 }}>
+                <Link to="/privacy-policy">Privacy Policy</Link> |{' '}
+                <Link to="/terms">Terms of Service</Link>
+            </div>
         </div>
     );
 };

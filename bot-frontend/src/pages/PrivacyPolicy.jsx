@@ -1,9 +1,39 @@
 export default function PrivacyPolicy() {
     return (
-        <div style={{ padding: 20, fontFamily: 'Arial, sans-serif' }}>
+        <div>
             <h1>Privacy Policy</h1>
             <p>Last updated: 20.03.2025</p>
-            {/* ... */}
+
+            <h2>1. Introduction</h2>
+            <p>Welcome to YouTube Comment Bot. Your privacy is important to us. This Privacy Policy explains how we collect,
+                use,
+                disclose, and safeguard your information when you use our application.</p>
+
+            <h2>2. Information We Collect</h2>
+            <p>We may collect personal information such as your name, email address, and any other data required for
+                authentication via Google OAuth.</p>
+
+            <h2>3. How We Use Your Information</h2>
+            <p>We use the collected information to provide and improve our services, personalize user experience, and ensure
+                account security.</p>
+
+            <h2>4. Data Sharing</h2>
+            <p>We do not sell, trade, or rent users' personal identification information to others. However, we may share
+                information with Google services to provide authentication.</p>
+
+            <h2>5. Data Security</h2>
+            <p>We implement security measures to protect your data from unauthorized access, alteration, disclosure, or
+                destruction.</p>
+
+            <h2>6. Third-Party Services</h2>
+            <p>Our app may contain links to third-party websites or services. We are not responsible for the privacy policies of
+                these third parties.</p>
+
+            <h2>7. Changes to This Privacy Policy</h2>
+            <p>We may update this Privacy Policy from time to time. Any changes will be posted on this page.</p>
+
+            <h2>8. Contact Us</h2>
+            <p>If you have any questions about this Privacy Policy, please contact us at richhowardrich@gmail.com.</p>
         </div>
     );
 }
