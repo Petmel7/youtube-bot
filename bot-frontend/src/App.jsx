@@ -3,8 +3,8 @@ import { Route, Routes, Link } from "react-router-dom";
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
 import Admin from "./pages/Admin";
-import PrivacyPolicy from './PrivacyPolicy';
-import Terms from './Terms';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import Terms from './pages/Terms';
 import "./index.css";
 
 function App() {
