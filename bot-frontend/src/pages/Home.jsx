@@ -23,7 +23,6 @@ const Home = () => {
             </a>
             <div style={{ textAlign: 'center', margin: 20 }}>
                 <Link to="/privacy-policy">Privacy Policy</Link>
-                {/* <Link to="/terms">Terms of Service</Link> |{' '} */}
             </div>
         </div>
     );
