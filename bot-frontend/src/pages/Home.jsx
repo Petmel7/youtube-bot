@@ -15,7 +15,7 @@ const Home = () => {
         <div className={styles.home}>
             <div className={styles.youTubeConteaner}>
                 <FaYoutube className={styles.youTubeIcon} />
-                <h1>YouTube Comment Bot</h1>
+                <h1>YouTube PetMel Comment Bot</h1>
             </div>
             <p>Automatically reply to comments on your YouTube channel.</p>
             <a href={`${config.backendUrl}/auth/google`}>
