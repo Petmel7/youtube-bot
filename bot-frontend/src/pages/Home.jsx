@@ -21,11 +21,11 @@ const Home = () => {
             <a href={`${config.backendUrl}/auth/google`}>
                 <button className="button">Connect YouTube</button>
             </a>
-            <div style={{ textAlign: 'center', margin: 20 }}>
-                {/* <Link to="/privacy-policy">Privacy Policy</Link> */}
-                {/* <span>Review the</span>
-                <a href="privacy-policy.html">Privacy Policy</a> */}
-            </div>
+            {/* <div style={{ textAlign: 'center', margin: 20 }}>
+                <Link to="/privacy-policy">Privacy Policy</Link>
+                <span>Review the</span>
+                <a href="privacy-policy.html">Privacy Policy</a>
+            </div> */}
         </div>
     );
 };
