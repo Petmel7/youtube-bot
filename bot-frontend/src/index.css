@@ -51,3 +51,8 @@ body.dark .input-dark {
     width: 400px;
     margin: 0 auto;
 }
+
+.privacy-policy {
+    text-align: center;
+    margin-top: 10px;
+}
