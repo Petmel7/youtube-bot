@@ -13,9 +13,9 @@
     "react-scripts": "5.0.1"
   },
   "scripts": {
-    "preinstall": "npx npm@9 install --legacy-peer-deps",
-    "start": "react-scripts start",
+    "postinstall": "npm install --legacy-peer-deps",
     "build": "react-scripts build",
+    "start": "react-scripts start",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
