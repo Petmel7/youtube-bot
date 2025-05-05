@@ -3,6 +3,7 @@
     "title": "YouTube PetMel Comment Bot",
     "description": "Автоматично відповідає на коментарі на вашому YouTube каналі.",
     "connect": "Підключити YouTube",
+    "privacy.policy": "Політика конфіденційності",
     "privacy.title": "Політика конфіденційності",
     "privacy.updated": "Останнє оновлення: 20.03.2025",
     "privacy.sections": {

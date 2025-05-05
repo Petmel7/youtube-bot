@@ -29,8 +29,6 @@ const LanguageSwitcher = () => {
                         {languages.map(({ code, label }) => (
                             <li key={code} onClick={() => handleLanguageChange(code)}>
                                 {label}
-                                {console.log('code', code)}
-                                {console.log('label', label)}
                             </li>
                         ))}
                     </ul>

@@ -29,7 +29,7 @@ const Home = () => {
                 <button className="button">{t('connect')}</button>
             </a>
             <footer class="privacy-policy">
-                <a href="privacy-policy">Privacy Policy</a>
+                <a href="privacy-policy">{t("privacy.policy")}</a>
             </footer>
         </div>
     );
