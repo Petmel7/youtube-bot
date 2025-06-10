@@ -1,5 +1,4 @@
 
-// src/components/Home.jsx
 import { useAuthStatus } from "../hooks/useAuthStatus";
 import { FaYoutube } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
