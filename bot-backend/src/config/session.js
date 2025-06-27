@@ -25,8 +25,9 @@
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
 const { sessionSecret, mongoUri } = require("./config");
+const isProduction = require("../utils/env");
 
-const isProduction = process.env.NODE_ENV === "production";
+// const isProduction = process.env.NODE_ENV === "production";
 
 const sessionMiddleware = session({
     secret: sessionSecret,
