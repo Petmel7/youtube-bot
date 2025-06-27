@@ -27,7 +27,7 @@ const Home = () => {
             <a href={`${config.backendUrl}/auth/google`}>
                 <button className="button">{t('connect')}</button>
             </a>
-            <footer class="privacy-policy">
+            <footer className="privacy-policy">
                 <a href="privacy-policy">{t("privacy.policy")}</a>
             </footer>
         </div>
