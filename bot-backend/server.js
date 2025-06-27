@@ -37,6 +37,10 @@ app.use((req, res, next) => {
     next();
 });
 
+app.get("/", (req, res) => {
+    res.send("✅ YouTube Bot Backend is running!");
+});
+
 // ✅ Підключення роутів
 app.use("/auth", authRoutes);
 app.use("/bot", botRoutes);
