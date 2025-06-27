@@ -1,7 +1,8 @@
 const cors = require("cors");
+const { getClientUrl } = require("../utils/env");
 
 const corsMiddleware = cors({
-    origin: "http://localhost:3000",
+    origin: getClientUrl(),
     credentials: true
 });
 

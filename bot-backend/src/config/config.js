@@ -6,5 +6,5 @@ module.exports = {
     googleRedirectUri: process.env.GOOGLE_REDIRECT_URI,
     sessionSecret: process.env.SESSION_SECRET,
     mongoUri: process.env.MONGO_URI,
-    geminiApiKey: process.env.GEMINI_API_KEY
+    geminiApiKey: process.env.GEMINI_API_KEY,
 };

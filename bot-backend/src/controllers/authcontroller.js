@@ -1,6 +1,6 @@
 
 const { findUserById, storeUserTokensInSession } = require("../services/authService");
-const getClientUrl = require("../utils/env");
+const { getClientUrl } = require("../utils/env");
 
 const googleAuthCallback = async (req, res) => {
     if (!req.user) {
@@ -15,7 +15,7 @@ const googleAuthCallback = async (req, res) => {
     }
 
     storeUserTokensInSession(req, user);
-
+    console.log("☑️getClientUrl()", getClientUrl());
     res.redirect(`${getClientUrl()}/dashboard`);
 };
 
