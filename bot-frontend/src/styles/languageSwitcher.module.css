@@ -1,0 +1,39 @@
+.languageSwitcher {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.customSelect {
+    background-color: #222;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+}
+
+.customDropdown {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    border: 1px solid #555;
+    border-radius: 5px;
+    list-style: none;
+    padding: 0;
+    margin: 4px 0 0 0;
+    z-index: 10;
+}
+
+.customDropdown li {
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    color: white;
+}
+
+.customDropdown li:hover {
+    background-color: black;
+}

@@ -1,0 +1,175 @@
+.dashboardConteaner h1 {
+    font-size: 24px;
+    text-align: center;
+}
+
+.themeConteaner {
+    width: 100%;
+}
+
+.genderDisplay {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+}
+
+.genderAndThemeInfo {
+    display: flex;
+    align-items: center;
+}
+
+.genderAndThemeIcon {
+    color: #ff0033;
+    margin-right: 5px;
+}
+
+.editButton {
+    padding: 5px 10px;
+    font-size: 14px;
+    width: 120px;
+}
+
+.saveButton {
+    padding: 5px 16px;
+    font-size: 14px;
+}
+
+.cancelButton {
+    background-color: #0f0f0f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 14px;
+    margin-right: 5px;
+}
+
+.saveButtonSpecial {
+    margin-right: 4px;
+}
+
+.saveInputButton {
+    position: absolute;
+    right: 5px;
+    top: 40%;
+    transform: translateY(-50%);
+}
+
+.editAndSaveButton {
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    color: black;
+    background-color: #e5e5e5;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.editAndSaveButton:hover {
+    background-color: #cecece;
+}
+
+.genderSelection {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+.genderLabel {
+    display: flex;
+    align-items: center;
+}
+
+.inputContainer {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.botContainer {
+    text-align: center;
+}
+
+.input {
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    transition: border-color 0.3s ease-in-out;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+
+.inputError {
+    border-color: red;
+}
+
+.themeDisplay {
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 15px;
+    justify-content: space-between;
+}
+
+.button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    /* Звичайний курсор */
+    transition: opacity 0.3s ease;
+}
+
+.button:disabled {
+    cursor: not-allowed;
+    /* 🚫 Заборонений курсор */
+    opacity: 0.6;
+    /* Зменшена прозорість */
+}
+
+.error {
+    color: red;
+    font-size: 14px;
+    margin-top: -5px;
+    margin-bottom: 10px;
+}
+
+.themeEditor {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.botIcon {
+    margin-right: 5px;
+}
+
+.genderContainer {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.genderLabel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    padding: 3px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.hiddenRadio {
+    display: none;
+    /* Ховає стандартне радіо */
+}
+
+.selected {
+    background-color: #ff0033;
+    color: white;
+    border-color: #ff0033;
+    ;
+}

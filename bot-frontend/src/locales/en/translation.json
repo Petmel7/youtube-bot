@@ -1,0 +1,27 @@
+{
+    "loading": "Loading...",
+    "title": "YouTube PetMel Comment Bot",
+    "description": "Automatically reply to comments on your YouTube channel.",
+    "connect": "Connect YouTube",
+    "privacy.policy": "Privacy Policy",
+    "privacy.title": "Privacy Policy",
+    "privacy.updated": "Last updated: 20.03.2025",
+    "privacy.sections": {
+        "1.title": "1. Introduction",
+        "1.body": "Welcome to YouTube PetMel Comment Bot. Your privacy is important to us. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our application.",
+        "2.title": "2. Information We Collect",
+        "2.body": "We may collect personal information such as your name, email address, and any other data required for authentication via Google OAuth.",
+        "3.title": "3. How We Use Your Information",
+        "3.body": "We use the collected information to provide and improve our services, personalize user experience, and ensure account security.",
+        "4.title": "4. Data Sharing",
+        "4.body": "We do not sell, trade, or rent users' personal identification information to others. However, we may share information with Google services to provide authentication.",
+        "5.title": "5. Data Security",
+        "5.body": "We implement security measures to protect your data from unauthorized access, alteration, disclosure, or destruction.",
+        "6.title": "6. Third-Party Services",
+        "6.body": "Our app may contain links to third-party websites or services. We are not responsible for the privacy policies of these third parties.",
+        "7.title": "7. Changes to This Privacy Policy",
+        "7.body": "We may update this Privacy Policy from time to time. Any changes will be posted on this page.",
+        "8.title": "8. Contact Us",
+        "8.body": "If you have any questions about this Privacy Policy, please contact us at richhowardrich@gmail.com."
+    }
+}

@@ -1,0 +1,25 @@
+.home {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.home h1 {
+    font-size: 24px;
+}
+
+.youTubeConteaner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.youTubeIcon {
+    font-size: 24px;
+    margin-right: 10px;
+    color: #ff0033;
+}
+
+.button {
+    padding: 10px 20px;
+    font-size: 16px;
+}

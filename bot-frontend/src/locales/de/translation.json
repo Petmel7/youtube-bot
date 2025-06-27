@@ -1,0 +1,27 @@
+{
+    "loading": "Wird geladen...",
+    "title": "YouTube PetMel Comment Bot",
+    "description": "Automatisch auf Kommentare in deinem YouTube-Kanal antworten.",
+    "connect": "YouTube verbinden",
+    "privacy.policy": "Datenschutzerklärung",
+    "privacy.title": "Datenschutzerklärung",
+    "privacy.updated": "Letzte Aktualisierung: 20.03.2025",
+    "privacy.sections": {
+        "1.title": "1. Einführung",
+        "1.body": "Willkommen beim YouTube PetMel Kommentar-Bot. Ihre Privatsphäre ist uns wichtig. Diese Datenschutzerklärung erklärt, wie wir Ihre Informationen erfassen, verwenden, offenlegen und schützen, wenn Sie unsere Anwendung verwenden.",
+        "2.title": "2. Informationen, die wir erfassen",
+        "2.body": "Wir können persönliche Informationen wie Ihren Namen, Ihre E-Mail-Adresse und alle anderen Daten erfassen, die für die Authentifizierung über Google OAuth erforderlich sind.",
+        "3.title": "3. Wie wir Ihre Informationen verwenden",
+        "3.body": "Wir verwenden die erfassten Informationen, um unsere Dienste bereitzustellen und zu verbessern, die Benutzererfahrung zu personalisieren und die Kontosicherheit zu gewährleisten.",
+        "4.title": "4. Datenweitergabe",
+        "4.body": "Wir verkaufen, handeln oder vermieten keine persönlichen Identifikationsinformationen der Nutzer an Dritte. Wir können jedoch Informationen mit Google-Diensten teilen, um die Authentifizierung bereitzustellen.",
+        "5.title": "5. Datensicherheit",
+        "5.body": "Wir implementieren Sicherheitsmaßnahmen, um Ihre Daten vor unbefugtem Zugriff, Änderung, Offenlegung oder Zerstörung zu schützen.",
+        "6.title": "6. Dienste Dritter",
+        "6.body": "Unsere App kann Links zu Websites oder Diensten Dritter enthalten. Wir sind nicht verantwortlich für die Datenschutzrichtlinien dieser Dritten.",
+        "7.title": "7. Änderungen an dieser Datenschutzerklärung",
+        "7.body": "Wir können diese Datenschutzerklärung von Zeit zu Zeit aktualisieren. Änderungen werden auf dieser Seite veröffentlicht.",
+        "8.title": "8. Kontaktieren Sie uns",
+        "8.body": "Wenn Sie Fragen zu dieser Datenschutzerklärung haben, kontaktieren Sie uns bitte unter richhowardrich@gmail.com."
+    }
+}
