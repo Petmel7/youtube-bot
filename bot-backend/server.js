@@ -20,6 +20,8 @@ const userPromptRoutes = require("./src/routes/userPromptRoutes");
 // ✅ Ініціалізація додатку
 const app = express();
 
+app.set('trust proxy', 1);
+
 // ✅ Підключення до MongoDB
 connectDB();
 
