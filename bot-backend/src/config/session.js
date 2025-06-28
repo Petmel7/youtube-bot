@@ -29,7 +29,7 @@ const { sessionSecret, mongoUri } = require("./config");
 
 const isProduction = process.env.NODE_ENV === "production";
 
-console.log("☑️isProduction", isProduction);
+console.log("☑️isProduction:", isProduction);
 
 const sessionMiddleware = session({
     secret: sessionSecret,
