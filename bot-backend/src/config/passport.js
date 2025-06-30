@@ -8,8 +8,6 @@ const {
     googleRedirectUri
 } = require("../config/config");
 
-console.log("🔔🔔googleRedirectUri", googleRedirectUri);
-
 passport.use(
     new GoogleStrategy(
         {

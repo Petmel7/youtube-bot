@@ -1,6 +1,4 @@
 const isAuthenticated = (req, res, next) => {
-    console.log("✅ req.isAuthenticated()", req.isAuthenticated());
-    console.log("✅ req.user", req.user);
 
     if (req.isAuthenticated() && req.user?.tokens) {
         return next();

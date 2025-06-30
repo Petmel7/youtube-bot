@@ -7,8 +7,8 @@ function ThemeIcon() {
     const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
 
     useEffect(() => {
-        document.body.className = theme; // Додаємо клас до body
-        localStorage.setItem("theme", theme); // Зберігаємо тему в LocalStorage
+        document.body.className = theme;
+        localStorage.setItem("theme", theme);
     }, [theme]);
 
     const toggleTheme = () => {

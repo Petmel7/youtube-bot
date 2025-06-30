@@ -3,9 +3,7 @@ const { findUserById, storeUserTokensInSession } = require("../services/authServ
 const { getClientUrl } = require("../utils/env");
 
 const googleAuthCallback = async (req, res) => {
-    console.log("🔔 googleAuthCallback HIT");
     if (!req.user) {
-        console.log("⛔ req.user is undefined");
         return res.status(401).json({ error: "Authentication failed!" });
     }
 
@@ -17,7 +15,6 @@ const googleAuthCallback = async (req, res) => {
     }
 
     storeUserTokensInSession(req, user);
-    console.log("☑️☑️☑️googleAuthCallback->getClientUrl()", getClientUrl());
     res.redirect(`${getClientUrl()}/dashboard`);
 };
 
