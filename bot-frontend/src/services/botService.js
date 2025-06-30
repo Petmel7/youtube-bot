@@ -1,6 +1,6 @@
 
 import config from "../config/config";
-import { fetchSaveOrUpdateTheme, fetchGetTheme } from "./promptService";
+import { fetchAddTheme, fetchGetTheme } from "./promptService";
 
 export const fetchStartBot = async (videoUrl, prompt, botGender, setIsBotRunning) => {
     const extractVideoId = (url) => {
@@ -20,7 +20,7 @@ export const fetchStartBot = async (videoUrl, prompt, botGender, setIsBotRunning
         const savedTheme = await fetchGetTheme();
         if (!savedTheme) {
             console.log("ℹ️ Тематика каналу ще не задана. Додаємо нову...");
-            const addTheme = await fetchSaveOrUpdateTheme(prompt.channelTheme, botGender);
+            const addTheme = await fetchAddTheme(prompt.channelTheme, botGender);
             if (!addTheme) {
                 console.warn("❌ Не вдалося додати тематику каналу.");
                 setIsBotRunning(false);

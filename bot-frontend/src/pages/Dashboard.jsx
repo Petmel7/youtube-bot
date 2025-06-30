@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useAuthStatus } from "../hooks/useAuthStatus";
 import { fetchStartBot } from "../services/botService";
 import { validateInputs } from "../validate/validateInputs";
-import { fetchUserPrompt, fetchSaveOrUpdateTheme, fetchSaveGender, generateBotPrompt } from "../services/promptService";
+import { fetchUserPrompt, fetchSaveTheme, fetchSaveGender, generateBotPrompt } from "../services/promptService";
 import Gender from "../components/Gender";
 import Theme from "../components/Theme";
 import BotStarter from "../components/BotStarter";
@@ -34,7 +34,7 @@ const Dashboard = () => {
     }, []);
 
     const saveTheme = async () => {
-        await fetchSaveOrUpdateTheme(channelTheme, setSavedTheme, setIsEditingTheme);
+        await fetchSaveTheme(channelTheme, setSavedTheme, setIsEditingTheme);
     };
 
     const saveGender = async () => {

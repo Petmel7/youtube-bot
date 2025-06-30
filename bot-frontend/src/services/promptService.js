@@ -1,93 +1,59 @@
 import config from "../config/config";
 
-// export const fetchAddTheme = async (channelTheme, botGender) => {
-//     if (!channelTheme || !botGender) {
-//         console.warn("❌ Введіть тематику каналу та виберіть стать!");
-//         return null;
-//     }
-
-//     const genderText = botGender === "male" ? "You are a man." : "You are a woman.";
-
-//     try {
-//         const res = await fetch(`${config.backendUrl}/user-prompt/add`, {
-//             method: "POST",
-//             credentials: "include",
-//             headers: { "Content-Type": "application/json" },
-//             body: JSON.stringify({ channelTheme, genderText })
-//         });
-
-//         if (!res.ok) {
-//             throw new Error(`HTTP error! Status: ${res.status}`);
-//         }
-
-//         const data = await res.json();
-//         console.log("✅ Тематика каналу та стать бота додані!", data.prompt);
-//         return data.success ? data.prompt : null;
-//     } catch (error) {
-//         console.error("❌ Error adding channel theme:", error);
-//         return null;
-//     }
-// };
-
-// export const fetchSaveTheme = async (channelTheme, setSavedTheme, setIsEditingTheme) => {
-//     if (!channelTheme) {
-//         alert("❌ Enter a channel theme!");
-//         return;
-//     }
-
-//     try {
-//         const res = await fetch(`${config.backendUrl}/user-prompt/update`, {
-//             method: "PUT",
-//             credentials: "include",
-//             headers: { "Content-Type": "application/json" },
-//             body: JSON.stringify({ channelTheme })
-//         });
-
-//         const data = await res.json();
-//         if (data.success) {
-//             setSavedTheme(channelTheme);
-//             setIsEditingTheme(false);
-//         } else {
-//             alert("❌ Failed to update channel theme.");
-//         }
-//     } catch (error) {
-//         console.error("❌ Error updating channel theme:", error);
-//     }
-// }
-
-export const fetchSaveOrUpdateTheme = async (channelTheme, botGender, setSavedTheme, setIsEditingTheme) => {
+export const fetchAddTheme = async (channelTheme, botGender) => {
     if (!channelTheme || !botGender) {
-        alert("❌ Введіть тематику каналу та виберіть стать!");
+        console.warn("❌ Введіть тематику каналу та виберіть стать!");
         return null;
     }
 
     const genderText = botGender === "male" ? "You are a man." : "You are a woman.";
 
     try {
-        const res = await fetch(`${config.backendUrl}/user-prompt/save-or-update`, {
+        const res = await fetch(`${config.backendUrl}/user-prompt/add`, {
             method: "POST",
             credentials: "include",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ channelTheme, genderText })
         });
 
-        const data = await res.json();
-
-        if (res.ok && data.success) {
-            if (setSavedTheme) setSavedTheme(channelTheme);
-            if (setIsEditingTheme) setIsEditingTheme(false);
-
-            console.log("✅ Тематика оновлена або збережена!", data.prompt);
-            return data.prompt;
-        } else {
-            alert("❌ Не вдалося зберегти тематику.");
-            return null;
+        if (!res.ok) {
+            throw new Error(`HTTP error! Status: ${res.status}`);
         }
+
+        const data = await res.json();
+        console.log("✅ Тематика каналу та стать бота додані!", data.prompt);
+        return data.success ? data.prompt : null;
     } catch (error) {
-        console.error("❌ Error saving/updating channel theme:", error);
+        console.error("❌ Error adding channel theme:", error);
         return null;
     }
 };
+
+export const fetchSaveTheme = async (channelTheme, setSavedTheme, setIsEditingTheme) => {
+    if (!channelTheme) {
+        alert("❌ Enter a channel theme!");
+        return;
+    }
+
+    try {
+        const res = await fetch(`${config.backendUrl}/user-prompt/update`, {
+            method: "PUT",
+            credentials: "include",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ channelTheme })
+        });
+
+        const data = await res.json();
+        if (data.success) {
+            setSavedTheme(channelTheme);
+            setIsEditingTheme(false);
+        } else {
+            alert("❌ Failed to update channel theme.");
+        }
+    } catch (error) {
+        console.error("❌ Error updating channel theme:", error);
+    }
+}
 
 export const fetchUserPrompt = async (setSavedTheme, setSavedGender) => {
     try {
