@@ -1,9 +1,12 @@
+
 import { useNavigate } from "react-router-dom";
 import { fetchLogout } from "../services/authService";
 import styles from "../styles/logout.module.css";
+import { useTranslation } from "react-i18next";
 
 const LogoutButton = () => {
     const navigate = useNavigate();
+    const { t } = useTranslation();
 
     const handleLogout = async () => {
         const res = await fetchLogout();
@@ -17,7 +20,7 @@ const LogoutButton = () => {
 
     return (
         <button className={styles.logoutButton} onClick={handleLogout}>
-            Logout
+            {t("logout")}
         </button>
     );
 };

@@ -1,5 +1,6 @@
 
 import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { useAuthStatus } from "../hooks/useAuthStatus";
 import { fetchStartBot } from "../services/botService";
 import { validateInputs } from "../validate/validateInputs";
@@ -8,6 +9,8 @@ import Gender from "../components/Gender";
 import Theme from "../components/Theme";
 import BotStarter from "../components/BotStarter";
 import Header from "../components/Header";
+import LanguageSwitcher from "../components/LanguageSwitcher";
+import Loading from "../components/Loading";
 import styles from "../styles/dashboard.module.css";
 
 const Dashboard = () => {
@@ -20,6 +23,7 @@ const Dashboard = () => {
     const [savedGender, setSavedGender] = useState(null);
     const [isEditingTheme, setIsEditingTheme] = useState(false);
     const [isEditingGender, setIsEditingGender] = useState(false);
+    const { t } = useTranslation();
     const isConnected = useAuthStatus(null, "/");
 
     useEffect(() => {
@@ -45,7 +49,7 @@ const Dashboard = () => {
         if (!validateInputs(videoUrl, savedTheme || channelTheme, setError)) return;
 
         const prompt = generateBotPrompt(botGender, savedTheme, channelTheme);
-        console.log("prompt", prompt);
+
         if (!prompt) return;
 
         const result = await fetchStartBot(videoUrl, prompt, botGender, setIsBotRunning);
@@ -57,14 +61,14 @@ const Dashboard = () => {
     };
 
     if (isConnected === null) {
-        return <p>Loading...</p>;
+        return <Loading />;
     }
 
     return (
         <div className={styles.dashboardConteaner}>
+            <LanguageSwitcher />
             <Header />
-
-            <h1>YouTube Bot Dashboard</h1>
+            <h1>YouTube {t('bot.dashboard')}</h1>
 
             <div className={styles.themeConteaner}>
                 <Gender {...{

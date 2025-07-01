@@ -1,25 +1,30 @@
 
 import styles from "../styles/dashboard.module.css";
+import { useTranslation } from "react-i18next";
 
-const GenderRadioGroup = ({ botGender, setBotGender }) => (
-    <>
-        <p>Select bot identity:</p>
-        <div className={styles.genderContainer}>
-            {['male', 'female'].map((gender) => (
-                <label key={gender} className={`${styles.genderLabel} ${botGender === gender ? styles.selected : ""}`}>
-                    <input
-                        type="radio"
-                        value={gender}
-                        checked={botGender === gender}
-                        onChange={() => setBotGender(gender)}
-                        className={styles.hiddenRadio}
-                    />
-                    {gender.charAt(0).toUpperCase() + gender.slice(1)}
-                </label>
-            ))}
-        </div>
-    </>
-);
+const GenderRadioGroup = ({ botGender, setBotGender }) => {
+    const { t } = useTranslation();
+
+    return (
+        <>
+            <p>{t("select.identity")}</p>
+            <div className={styles.genderContainer}>
+                {["male", "female"].map((gender) => (
+                    <label key={gender} className={`${styles.genderLabel} ${botGender === gender ? styles.selected : ""}`}>
+                        <input
+                            type="radio"
+                            value={gender}
+                            checked={botGender === gender}
+                            onChange={() => setBotGender(gender)}
+                            className={styles.hiddenRadio}
+                        />
+                        {t(gender)}
+                    </label>
+                ))}
+            </div>
+        </>
+    );
+};
 
 export default GenderRadioGroup;
 

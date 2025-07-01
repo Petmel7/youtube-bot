@@ -7,12 +7,14 @@ import AdminButton from "./AdminButton";
 import Tooltip from "./Tooltip";
 import ThemeIcon from "./ThemeIcon";
 import styles from "../styles/header.module.css";
+import { useTranslation } from "react-i18next";
 
 const Header = () => {
     const { user, loading, error } = useUser();
     const { isTooltipOpen, showTooltip, hideTooltip } = useTooltip();
+    const { t } = useTranslation();
 
-    if (loading || !user) return <p>Loading...</p>;
+    if (loading || !user) return <p>{t("loading")}</p>;
     if (error) return <p>{error}</p>;
 
     return (
@@ -23,10 +25,10 @@ const Header = () => {
                 onMouseLeave={hideTooltip}
             >
                 <FaYoutube className={styles.youTubeIcon} />
-                <h3>Connected to</h3>
+                <h3>{t("connected.to")}</h3>
 
                 {user?.picture && (
-                    <img key={user.picture} src={user.picture} alt="User Avatar" className={styles.userAvatar} />
+                    <img key={user.picture} src={user.picture} alt={t("avatar.alt") || "User Avatar"} className={styles.userAvatar} />
                 )}
 
                 <p className={styles.name}>{user.name}</p>
@@ -42,4 +44,5 @@ const Header = () => {
 };
 
 export default Header;
+
 

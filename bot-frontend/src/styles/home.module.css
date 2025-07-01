@@ -23,3 +23,23 @@
     padding: 10px 20px;
     font-size: 16px;
 }
+
+
+
+
+.privacyPolicy {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.privacyPolicy a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.privacyPolicy a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}

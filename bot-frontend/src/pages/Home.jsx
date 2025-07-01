@@ -3,6 +3,7 @@ import { useAuthStatus } from "../hooks/useAuthStatus";
 import { FaYoutube } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
 import LanguageSwitcher from "../components/LanguageSwitcher";
+import Loading from "../components/Loading";
 import config from "../config/config";
 import styles from "../styles/home.module.css";
 
@@ -11,7 +12,7 @@ const Home = () => {
     const { t } = useTranslation();
 
     if (isConnected === null) {
-        return <p>{t('loading')}</p>;
+        return <Loading />;
     }
 
     return (
@@ -27,7 +28,8 @@ const Home = () => {
             <a href={`${config.backendUrl}/auth/google`}>
                 <button className="button">{t('connect')}</button>
             </a>
-            <footer className="privacy-policy">
+
+            <footer className={styles.privacyPolicy}>
                 <a href="privacy-policy">{t("privacy.policy")}</a>
             </footer>
         </div>
