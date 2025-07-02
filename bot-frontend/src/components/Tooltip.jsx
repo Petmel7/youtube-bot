@@ -1,13 +1,11 @@
-import styles from "../styles/header.module.css";
 
 const Tooltip = ({ children, isTooltipOpen }) => (
     <>
         {isTooltipOpen && (
-            <div className={styles.dropdownMenu}>
+            <div className="dropdown-menu">
                 {children}
             </div>)}
     </>
 )
 
 export default Tooltip;
-

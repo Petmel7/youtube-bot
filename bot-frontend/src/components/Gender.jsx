@@ -26,7 +26,7 @@ const Gender = ({
 
                     <Tooltip isTooltipOpen={isTooltipOpen}>
                         <button className={styles.cancelButton} onClick={() => setIsEditingGender(false)}>{t("cancel")}</button>
-                        <button className={`${styles.saveButton} ${styles.editAndSaveButton}`} onClick={saveGender}>{t("save")}</button>
+                        <button className={`${styles.saveButton} editAndSaveButton editAndSave`} onClick={saveGender}>{t("save")}</button>
                     </Tooltip>
                 </div>
             ) : savedGender ? (
@@ -35,7 +35,7 @@ const Gender = ({
                         <p className={styles.genderAndThemeIcon}>{savedGender === "male" ? <FaMale /> : <FaFemale />}</p>
                         <p>{t("bot.gender")}: <strong>{savedGender === "male" ? t("male") : t("female")}</strong></p>
                     </div>
-                    <button className={`${styles.editButton} ${styles.editAndSaveButton}`} onClick={() => setIsEditingGender(true)}>{t("change.gender")}</button>
+                    <button className={`${styles.editButton} editAndSaveButton`} onClick={() => setIsEditingGender(true)}>{t("change.gender")}</button>
                 </div>
             ) : (
                 <div className={styles.genderSelection}>

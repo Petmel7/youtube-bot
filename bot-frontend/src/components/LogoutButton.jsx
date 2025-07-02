@@ -1,8 +1,8 @@
 
 import { useNavigate } from "react-router-dom";
 import { fetchLogout } from "../services/authService";
-import styles from "../styles/logout.module.css";
 import { useTranslation } from "react-i18next";
+import styles from "../styles/logout.module.css";
 
 const LogoutButton = () => {
     const navigate = useNavigate();

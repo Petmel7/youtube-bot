@@ -27,7 +27,7 @@ const Theme = ({
 
                     <Tooltip isTooltipOpen={isTooltipOpen}>
                         <button className={styles.cancelButton} onClick={() => setIsEditingTheme(false)}>{t("cancel")}</button>
-                        <button className={`${styles.saveButton} ${styles.editAndSaveButton}`} onClick={saveTheme}>{t("save")}</button>
+                        <button className={`${styles.saveButton} editAndSaveButton editAndSave`} onClick={saveTheme}>{t("save")}</button>
                     </Tooltip>
                 </div>
             ) : savedTheme ? (
@@ -36,7 +36,7 @@ const Theme = ({
                         <FaPlayCircle className={styles.genderAndThemeIcon} />
                         <p>{t("channel.theme")}: <strong>{savedTheme}</strong></p>
                     </div>
-                    <button className={`${styles.editButton} ${styles.editAndSaveButton}`} onClick={() => setIsEditingTheme(true)}>{t("change.theme")}</button>
+                    <button className={`${styles.editButton} editAndSaveButton`} onClick={() => setIsEditingTheme(true)}>{t("change.theme")}</button>
                 </div>
             ) : (
                 <div>

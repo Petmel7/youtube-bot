@@ -20,7 +20,7 @@ const LanguageSwitcher = () => {
     return (
         <div className={styles.languageSwitcher}>
             <div
-                className={styles.customSelect}
+                className={`${styles.customSelect} button`}
                 onClick={() => setIsOpen(!isOpen)}
             >
                 <span>{currentLabel}</span>

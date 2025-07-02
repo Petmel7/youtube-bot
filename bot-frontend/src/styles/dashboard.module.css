@@ -36,12 +36,19 @@
 
 .cancelButton {
     background-color: #0f0f0f;
+    border: 1px solid #0f0f0f;
+    cursor: pointer;
     color: white;
-    border: none;
     border-radius: 5px;
     padding: 5px 10px;
     font-size: 14px;
     margin-right: 5px;
+    transition: background 0.3s;
+}
+
+.cancelButton:hover {
+    background-color: #3d3d3d;
+    border: 1px solid #3d3d3d;
 }
 
 .saveButtonSpecial {
@@ -53,19 +60,6 @@
     right: 5px;
     top: 40%;
     transform: translateY(-50%);
-}
-
-.editAndSaveButton {
-    cursor: pointer;
-    border: none;
-    border-radius: 5px;
-    color: black;
-    background-color: #e5e5e5;
-    transition: background-color 0.3s ease-in-out;
-}
-
-.editAndSaveButton:hover {
-    background-color: #cecece;
 }
 
 .genderSelection {
