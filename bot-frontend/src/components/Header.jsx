@@ -25,7 +25,7 @@ const Header = () => {
                 onMouseLeave={hideTooltip}
             >
                 <FaYoutube className={styles.youTubeIcon} />
-                <h1>{t("connected.to")}</h1>
+                <h1 className={styles.headerTitle}>{t("connected.to")}</h1>
 
                 {user?.picture && (
                     <img key={user.picture} src={user.picture} alt={t("avatar.alt") || "User Avatar"} className={styles.userAvatar} />

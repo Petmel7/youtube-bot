@@ -7,7 +7,6 @@ const GenderRadioGroup = ({ botGender, setBotGender }) => {
 
     return (
         <>
-            <p>{t("select.identity")}</p>
             <div className={styles.genderContainer}>
                 {["male", "female"].map((gender) => (
                     <label key={gender} className={`${styles.genderLabel} ${botGender === gender ? styles.selected : ""}`}>
@@ -22,6 +21,7 @@ const GenderRadioGroup = ({ botGender, setBotGender }) => {
                     </label>
                 ))}
             </div>
+            <p className={styles.genderDescription}>{t("select.identity")}</p>
         </>
     );
 };

@@ -7,6 +7,11 @@
     position: relative;
     cursor: pointer;
     text-align: center;
+    margin-bottom: 20px;
+}
+
+.headerTitle {
+    font-size: 20px;
 }
 
 .youTubeIcon {
@@ -36,7 +41,7 @@
         gap: 8px;
     }
 
-    .headerSection h1 {
+    .headerTitle {
         font-size: 20px;
     }
 
@@ -54,12 +59,6 @@
     }
 }
 
-@media (min-width: 480px) {
-    .headerSection h1 {
-        margin: 30px 0;
-    }
-}
-
 @media (max-width: 480px) {
     .headerSection {
         flex-direction: column;
@@ -67,7 +66,7 @@
         gap: 5px;
     }
 
-    .headerSection h1 {
+    .headerTitle {
         font-size: 24px;
     }
 

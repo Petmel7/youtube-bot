@@ -68,7 +68,8 @@ const Dashboard = () => {
         <div className={styles.dashboardConteaner}>
             <LanguageSwitcher />
             <Header />
-            <h1>YouTube {t('bot.dashboard')}</h1>
+
+            <h1 className={styles.dashboardTitle}>YouTube {t('bot.dashboard')}</h1>
 
             <div className={styles.themeConteaner}>
                 <Gender {...{
