@@ -32,11 +32,18 @@ const Theme = ({
                 </div>
             ) : savedTheme ? (
                 <div className={styles.themeDisplay}>
-                    <div className={styles.genderAndThemeInfo}>
-                        <FaPlayCircle className={styles.genderAndThemeIcon} />
-                        <p>{t("channel.theme")}: <strong>{savedTheme}</strong></p>
-                    </div>
-                    <button className={`${styles.editButton} editAndSaveButton`} onClick={() => setIsEditingTheme(true)}>{t("change.theme")}</button>
+                    <button
+                        className={`${styles.editButton} editAndSaveButton editButton`}
+                        onClick={() => setIsEditingTheme(true)}
+                    >
+                        <div className={styles.genderAndThemeInfo}>
+                            <div className={styles.genderAndThemeInfoBlock}>
+                                <FaPlayCircle className={styles.genderAndThemeIcon} />
+                                <p>{t("channel.theme")}: <strong>{savedTheme}</strong></p>
+                            </div>
+                            <p>{t("change.theme")}</p>
+                        </div>
+                    </button>
                 </div>
             ) : (
                 <div>

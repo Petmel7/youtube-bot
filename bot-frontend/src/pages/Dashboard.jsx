@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useAuthStatus } from "../hooks/useAuthStatus";
 import { fetchStartBot } from "../services/botService";
-import { validateInputs } from "../validate/validateInputs";
+import { validateChannelTheme, validateVideoUrl } from "../validate/validateInputs";
 import { fetchUserPrompt, fetchSaveTheme, fetchSaveGender, generateBotPrompt } from "../services/promptService";
 import Gender from "../components/Gender";
 import Theme from "../components/Theme";
@@ -38,18 +38,21 @@ const Dashboard = () => {
     }, []);
 
     const saveTheme = async () => {
+        if (!validateChannelTheme(channelTheme, setError)) return;
         await fetchSaveTheme(channelTheme, setSavedTheme, setIsEditingTheme);
     };
+
 
     const saveGender = async () => {
         await fetchSaveGender(botGender, setSavedGender, setIsEditingGender);
     };
 
     const startBot = async () => {
-        if (!validateInputs(videoUrl, savedTheme || channelTheme, setError)) return;
+        const videoOk = validateVideoUrl(videoUrl, setError);
+        const themeOk = validateChannelTheme(savedTheme || channelTheme, setError);
+        if (!videoOk || !themeOk) return;
 
         const prompt = generateBotPrompt(botGender, savedTheme, channelTheme);
-
         if (!prompt) return;
 
         const result = await fetchStartBot(videoUrl, prompt, botGender, setIsBotRunning);

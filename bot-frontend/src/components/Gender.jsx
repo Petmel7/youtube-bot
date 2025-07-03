@@ -31,11 +31,18 @@ const Gender = ({
                 </div>
             ) : savedGender ? (
                 <div className={styles.genderDisplay}>
-                    <div className={styles.genderAndThemeInfo}>
-                        <p className={styles.genderAndThemeIcon}>{savedGender === "male" ? <FaMale /> : <FaFemale />}</p>
-                        <p>{t("bot.gender")}: <strong>{savedGender === "male" ? t("male") : t("female")}</strong></p>
-                    </div>
-                    <button className={`${styles.editButton} editAndSaveButton`} onClick={() => setIsEditingGender(true)}>{t("change.gender")}</button>
+                    <button
+                        className={`${styles.editButton} editAndSaveButton`}
+                        onClick={() => setIsEditingGender(true)}
+                    >
+                        <div className={styles.genderAndThemeInfo}>
+                            <div className={styles.genderAndThemeInfoBlock}>
+                                <p className={styles.genderAndThemeIcon}>{savedGender === "male" ? <FaMale /> : <FaFemale />}</p>
+                                <p>{t("bot.gender")}: <strong>{savedGender === "male" ? t("male") : t("female")}</strong></p>
+                            </div>
+                            <p>{t("change.gender")}</p>
+                        </div>
+                    </button>
                 </div>
             ) : (
                 <div className={styles.genderSelection}>

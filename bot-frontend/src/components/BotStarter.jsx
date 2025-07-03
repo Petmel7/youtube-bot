@@ -9,14 +9,15 @@ const BotStarter = ({ error, videoUrl, setVideoUrl, startBot, isBotRunning }) =>
 
     return (
         <div className={styles.botContainer}>
-            <input
-                className={`${styles.input} ${error.videoUrl ? styles.inputError : ""} input-dark`}
-                type="text"
-                placeholder={t("input.placeholder")}
-                value={videoUrl}
-                onChange={(e) => setVideoUrl(e.target.value)}
-            />
-            {error.videoUrl && <p className={styles.error}>❌ {t("input.error")}</p>}
+            <div>
+                <input
+                    className={`${styles.input} ${error.videoUrl ? styles.inputError : ""} input-dark`}
+                    type="text"
+                    placeholder={t("input.placeholder")}
+                    value={videoUrl}
+                    onChange={(e) => setVideoUrl(e.target.value)}
+                />
+            </div>
 
             <button
                 className="button"

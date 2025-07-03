@@ -1,16 +1,12 @@
-export const validateInputs = (videoUrl, channelTheme, setError) => {
-    let errors = { videoUrl: false, channelTheme: false };
-    let isValid = true;
 
-    if (!videoUrl.trim()) {
-        errors.videoUrl = true;
-        isValid = false;
-    }
-    if (!channelTheme.trim()) {
-        errors.channelTheme = true;
-        isValid = false;
-    }
+export const validateVideoUrl = (videoUrl, setError) => {
+    const isValid = !!videoUrl.trim();
+    setError(prev => ({ ...prev, videoUrl: !isValid }));
+    return isValid;
+};
 
-    setError(errors);
+export const validateChannelTheme = (channelTheme, setError) => {
+    const isValid = !!channelTheme.trim();
+    setError(prev => ({ ...prev, channelTheme: !isValid }));
     return isValid;
 };
