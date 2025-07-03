@@ -1,123 +1,122 @@
+.dashboardConteaner {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
 .dashboardConteaner h1 {
-    font-size: 24px;
+    font-size: 28px;
     text-align: center;
 }
 
 .themeConteaner {
     width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+    margin-bottom: 30px;
 }
 
-.genderDisplay {
+.genderDisplay,
+.themeDisplay {
     display: flex;
-    align-items: baseline;
+    align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 .genderAndThemeInfo {
     display: flex;
     align-items: center;
+    gap: 5px;
 }
 
 .genderAndThemeIcon {
     color: #ff0033;
-    margin-right: 5px;
+    font-size: 18px;
 }
 
-.editButton {
-    padding: 5px 10px;
+.editButton,
+.saveButton,
+.cancelButton {
+    padding: 8px 16px;
     font-size: 14px;
-    width: 120px;
-}
-
-.saveButton {
-    padding: 5px 16px;
-    font-size: 14px;
+    border-radius: 5px;
+    white-space: nowrap;
 }
 
 .cancelButton {
     background-color: #0f0f0f;
     border: 1px solid #0f0f0f;
-    cursor: pointer;
     color: white;
-    border-radius: 5px;
-    padding: 5px 10px;
-    font-size: 14px;
-    margin-right: 5px;
+    cursor: pointer;
     transition: background 0.3s;
 }
 
 .cancelButton:hover {
     background-color: #3d3d3d;
-    border: 1px solid #3d3d3d;
+    border-color: #3d3d3d;
 }
 
-.saveButtonSpecial {
-    margin-right: 4px;
+.saveButton {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    cursor: pointer;
 }
 
-.saveInputButton {
-    position: absolute;
-    right: 5px;
-    top: 40%;
-    transform: translateY(-50%);
-}
-
-.genderSelection {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: relative;
-}
-
-.genderLabel {
-    display: flex;
-    align-items: center;
-}
-
+.genderSelection,
 .inputContainer {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
     position: relative;
 }
 
 .botContainer {
     text-align: center;
+    margin-top: 20px;
 }
 
 .input {
     padding: 10px;
     width: 100%;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
     border: 1px solid #ccc;
-    transition: border-color 0.3s ease-in-out;
     box-sizing: border-box;
     border-radius: 5px;
+    transition: border-color 0.3s ease-in-out;
 }
 
 .inputError {
     border-color: red;
 }
 
-.themeDisplay {
-    display: flex;
-    align-items: baseline;
-    margin-bottom: 15px;
-    justify-content: space-between;
-}
-
 .button {
     padding: 10px 20px;
     font-size: 16px;
+    margin-top: 10px;
+    border-radius: 6px;
+    background-color: #101828;
+    color: white;
+    border: none;
     cursor: pointer;
-    /* Звичайний курсор */
-    transition: opacity 0.3s ease;
+    transition: background-color 0.3s;
 }
 
 .button:disabled {
     cursor: not-allowed;
-    /* 🚫 Заборонений курсор */
     opacity: 0.6;
-    /* Зменшена прозорість */
+}
+
+.button:hover:not(:disabled) {
+    background-color: #1e90ff;
 }
 
 .error {
@@ -127,20 +126,17 @@
     margin-bottom: 10px;
 }
 
-.themeEditor {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 15px;
-}
-
 .botIcon {
     margin-right: 5px;
 }
 
+/* Gender Radio Group */
 .genderContainer {
     display: flex;
     gap: 10px;
+    flex-wrap: wrap;
     align-items: center;
+    justify-content: center;
 }
 
 .genderLabel {
@@ -148,7 +144,7 @@
     align-items: center;
     justify-content: center;
     min-width: 70px;
-    padding: 3px;
+    padding: 5px 10px;
     font-size: 14px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -164,5 +160,71 @@
     background-color: #ff0033;
     color: white;
     border-color: #ff0033;
-    ;
+}
+
+/* ✅ АДАПТАЦІЯ ПІД РІЗНІ ЕКРАНИ */
+
+@media (max-width: 768px) {
+    .dashboardConteaner h1 {
+        font-size: 24px;
+    }
+
+    .themeConteaner {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .inputContainer,
+    .genderSelection {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media (min-width: 480px) {
+    .dashboardConteaner h1 {
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .dashboardConteaner h1 {
+        margin: 10px 0;
+    }
+}
+
+@media (max-width: 400px) {
+    .dashboardConteaner {
+        padding: 15px;
+    }
+
+    .dashboardConteaner h1 {
+        font-size: 20px;
+    }
+
+    .input {
+        font-size: 14px;
+    }
+
+    .button {
+        font-size: 15px;
+        padding: 10px 16px;
+    }
+
+    .genderLabel {
+        font-size: 13px;
+        padding: 4px 8px;
+    }
+
+    .genderAndThemeIcon {
+        font-size: 16px;
+    }
+
+    .editButton,
+    .saveButton,
+    .cancelButton,
+    .button {
+        width: 100%;
+        max-width: 100%;
+    }
 }

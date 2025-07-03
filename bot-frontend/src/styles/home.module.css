@@ -1,32 +1,51 @@
 .home {
     margin-top: 50px;
     text-align: center;
+    padding: 0 20px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
 }
 
 .home h1 {
-    font-size: 24px;
+    font-size: 32px;
+    margin: 20px 0 10px;
 }
 
 .youTubeConteaner {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 .youTubeIcon {
-    font-size: 24px;
-    margin-right: 10px;
+    font-size: 36px;
     color: #ff0033;
 }
 
 .button {
-    padding: 10px 20px;
-    font-size: 16px;
+    padding: 12px 24px;
+    font-size: 18px;
+    border: none;
+    border-radius: 6px;
+    background-color: #101828;
+    color: #fff;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #1e90ff;
 }
 
 .privacyPolicy {
     margin-top: 2rem;
     text-align: center;
+    font-size: 14px;
 }
 
 .privacyPolicy a {
@@ -39,4 +58,34 @@
 .privacyPolicy a:hover {
     color: #0056b3;
     text-decoration: underline;
+}
+
+/* ✅ ADAPTIVE */
+
+@media (max-width: 768px) {
+    .home h1 {
+        font-size: 26px;
+    }
+
+    .youTubeIcon {
+        font-size: 30px;
+    }
+
+    .privacyPolicy {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    .home h1 {
+        font-size: 22px;
+    }
+
+    .youTubeIcon {
+        font-size: 26px;
+    }
+
+    .privacyPolicy {
+        font-size: 12px;
+    }
 }

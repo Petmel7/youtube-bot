@@ -1,3 +1,7 @@
+h1 {
+    margin: 0;
+}
+
 /* Світла тема (за замовчуванням) */
 body {
     font-family: Arial, sans-serif;
@@ -74,8 +78,11 @@ body.dark-mode .theme-toggle:hover {
 }
 
 .container {
-    width: 400px;
+    width: 100%;
+    max-width: 600px;
     margin: 0 auto;
+    padding: 0 20px;
+    box-sizing: border-box;
 }
 
 .editAndSaveButton {
@@ -106,4 +113,18 @@ body.dark-mode .editAndSaveButton:hover {
 
 body.dark-mode .editAndSave {
     border: 1px solid #cecece;
+}
+
+@media (max-width: 768px) {
+    .button {
+        font-size: 16px;
+        padding: 10px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .button {
+        font-size: 15px;
+        padding: 8px 16px;
+    }
 }
