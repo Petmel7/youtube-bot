@@ -36,11 +36,11 @@ const Gender = ({
                         onClick={() => setIsEditingGender(true)}
                     >
                         <div className={styles.genderAndThemeInfo}>
+                            {savedGender === "male" ? <FaMale className={styles.genderAndThemeIcon} /> : <FaFemale className={styles.genderAndThemeIcon} />}
                             <div className={styles.genderAndThemeInfoBlock}>
-                                <p className={styles.genderAndThemeIcon}>{savedGender === "male" ? <FaMale /> : <FaFemale />}</p>
                                 <p>{t("bot.gender")}: <strong>{savedGender === "male" ? t("male") : t("female")}</strong></p>
+                                <p>{t("change.gender")}</p>
                             </div>
-                            <p>{t("change.gender")}</p>
                         </div>
                     </button>
                 </div>

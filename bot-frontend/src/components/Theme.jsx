@@ -37,11 +37,11 @@ const Theme = ({
                         onClick={() => setIsEditingTheme(true)}
                     >
                         <div className={styles.genderAndThemeInfo}>
+                            <FaPlayCircle className={styles.genderAndThemeIcon} />
                             <div className={styles.genderAndThemeInfoBlock}>
-                                <FaPlayCircle className={styles.genderAndThemeIcon} />
                                 <p>{t("channel.theme")}: <strong>{savedTheme}</strong></p>
+                                <p>{t("change.theme")}</p>
                             </div>
-                            <p>{t("change.theme")}</p>
                         </div>
                     </button>
                 </div>

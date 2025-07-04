@@ -9,8 +9,7 @@
 }
 
 .home h1 {
-    font-size: 32px;
-    margin: 20px 0 10px;
+    font-size: 26px;
 }
 
 .youTubeConteaner {
@@ -19,10 +18,15 @@
     justify-content: center;
     flex-wrap: wrap;
     gap: 10px;
+    margin-bottom: 20px;
+}
+
+.home p {
+    margin-bottom: 20px;
 }
 
 .youTubeIcon {
-    font-size: 36px;
+    font-size: 30px;
     color: #ff0033;
 }
 
@@ -63,20 +67,13 @@
 /* ✅ ADAPTIVE */
 
 @media (max-width: 768px) {
-    .home h1 {
-        font-size: 26px;
-    }
-
-    .youTubeIcon {
-        font-size: 30px;
-    }
 
     .privacyPolicy {
         font-size: 13px;
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 514px) {
     .home h1 {
         font-size: 22px;
     }
@@ -87,5 +84,11 @@
 
     .privacyPolicy {
         font-size: 12px;
+    }
+}
+
+@media (max-width: 451px) {
+    .youTubeIcon {
+        font-size: 40px;
     }
 }
