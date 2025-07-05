@@ -11,6 +11,7 @@ import BotStarter from "../components/BotStarter";
 import Header from "../components/Header";
 import LanguageSwitcher from "../components/LanguageSwitcher";
 import Loading from "../components/Loading";
+import VideoListButton from "../components/VideoListButton";
 import styles from "../styles/dashboard.module.css";
 
 const Dashboard = () => {
@@ -94,6 +95,8 @@ const Dashboard = () => {
                     setIsEditingTheme
                 }} />
             </div>
+
+            <VideoListButton />
 
             <BotStarter {...{
                 error,

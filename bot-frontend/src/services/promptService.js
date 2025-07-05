@@ -1,5 +1,4 @@
 import config from "../config/config";
-import { validateInputs } from "../validate/validateInputs";
 
 export const fetchAddTheme = async (channelTheme, botGender) => {
     if (!channelTheme || !botGender) {

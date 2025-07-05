@@ -16,6 +16,7 @@ const authRoutes = require("./src/routes/authRoutes");
 const botRoutes = require("./src/routes/botRoutes");
 const userRoutes = require("./src/routes/userRoutes");
 const userPromptRoutes = require("./src/routes/userPromptRoutes");
+const youtubeRoutes = require("./src/routes/youtubeRoutes");
 
 // ✅ Ініціалізація додатку
 const app = express();
@@ -48,6 +49,7 @@ app.use("/auth", authRoutes);
 app.use("/bot", botRoutes);
 app.use("/user", userRoutes);
 app.use("/user-prompt", userPromptRoutes);
+app.use("/youtube", youtubeRoutes);
 
 // ✅ Запуск сервера
 const PORT = process.env.PORT || 10000;
