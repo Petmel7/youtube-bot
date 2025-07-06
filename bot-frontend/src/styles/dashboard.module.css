@@ -24,14 +24,14 @@
 .themeDisplay {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     flex-wrap: wrap;
 }
 
 .genderAndThemeInfo {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 5px;
 }
 
 .genderAndThemeInfoBlock {
@@ -57,7 +57,7 @@
 .saveButton,
 .cancelButton {
     padding: 10px 16px;
-    font-size: 14px;
+    font-size: 16px;
     border-radius: 5px;
     white-space: nowrap;
 }

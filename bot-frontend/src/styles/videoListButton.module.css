@@ -1,13 +1,6 @@
 .button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #1e88e5;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-bottom: 10px;
-    transition: background-color 0.2s ease-in-out;
+    margin-bottom: 20px;
+    width: 100%;
 }
 
 .button:hover {
@@ -34,4 +27,20 @@
 .thumbnail {
     width: 120px;
     border-radius: 4px;
+}
+
+.buttonBlock {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.iconButton {
+    font-size: 20px;
+    color: red;
+}
+
+.buttonBlock p {
+    font-size: 16px;
 }

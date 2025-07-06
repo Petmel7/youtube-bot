@@ -25,6 +25,9 @@
     "avatar.alt": "Avatar de l'utilisateur",
     "select.identity": "Sélectionnez l'identité du bot",
     "theme.input.placeholder": "Entrez un nouveau thème de chaîne",
+    "show.videos": "Afficher mes vidéos",
+    "hide.videos": "Masquer les vidéos",
+    "no.videos": "Aucune vidéo trouvée",
     "privacy.sections": {
         "1.title": "1. Introduction",
         "1.body": "Bienvenue sur le bot de commentaires YouTube PetMel. Votre vie privée est importante pour nous. Cette politique de confidentialité explique comment nous collectons, utilisons, divulguons et protégeons vos informations lorsque vous utilisez notre application.",

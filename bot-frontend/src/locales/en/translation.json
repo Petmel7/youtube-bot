@@ -25,6 +25,9 @@
     "avatar.alt": "User Avatar",
     "select.identity": "Select bot identity",
     "theme.input.placeholder": "Enter new channel theme",
+    "show.videos": "Show My Videos",
+    "hide.videos": "Hide Videos",
+    "no.videos": "No videos found",
     "privacy.sections": {
         "1.title": "1. Introduction",
         "1.body": "Welcome to YouTube PetMel Comment Bot. Your privacy is important to us. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our application.",
